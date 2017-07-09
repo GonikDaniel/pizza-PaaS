@@ -4,14 +4,14 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app'; // app and typings
 
 @Component({
-  selector: 'app-root',
+  selector: 'paas-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   public items: FirebaseListObservable<any[]>;
   public user: any;
-  public msgVal: string = '';
+  public msgVal = '';
 
   constructor(
     private db: AngularFireDatabase,
@@ -24,7 +24,7 @@ export class AppComponent {
     });
 
     this.afAuth.authState.subscribe(user => {
-      if(user) {
+      if (user) {
         this.user = user;
       }
     });

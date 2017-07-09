@@ -3,10 +3,10 @@ import {
   Optional, SkipSelf
 } from '@angular/core';
 
-import { CommonModule }      from '@angular/common';
+import { CommonModule } from '@angular/common';
 
-import { TitleComponent }    from './title.component';
-import { UserService }       from './user.service';
+import { TitleComponent } from './title.component';
+import { UserService } from './user.service';
 import { UserServiceConfig } from './user.service';
 
 import { LoggerService } from './logger.service';
@@ -26,12 +26,6 @@ import { SpinnerService } from './spinner/spinner.service';
 })
 export class CoreModule {
 
-  constructor (@Optional() @SkipSelf() parentModule: CoreModule) {
-    if (parentModule) {
-      throw new Error('CoreModule is already loaded. Import it in the AppModule only');
-    }
-  }
-
   static forRoot(config: UserServiceConfig): ModuleWithProviders {
     return {
       ngModule: CoreModule,
@@ -40,4 +34,11 @@ export class CoreModule {
       ]
     };
   }
+
+  constructor( @Optional() @SkipSelf() parentModule: CoreModule) {
+    if (parentModule) {
+      throw new Error('CoreModule is already loaded. Import it in the AppModule only');
+    }
+  }
+
 }
