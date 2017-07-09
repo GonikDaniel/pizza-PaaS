@@ -6,11 +6,11 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: '<your-key>',
-    authDomain: '<your-project-authdomain>',
-    databaseURL: '<your-database-URL>',
-    projectId: '<your-project-id>',
-    storageBucket: '<your-storage-bucket>',
-    messagingSenderId: '<your-messaging-sender-id>'
+    apiKey: 'AIzaSyDIm7oqfghKTC7YIDYNrDqqs6dRAf_F72k',
+    authDomain: 'pizza-paas.firebaseapp.com',
+    databaseURL: 'https://pizza-paas.firebaseio.com',
+    projectId: 'pizza-paas',
+    storageBucket: 'pizza-paas.appspot.com',
+    messagingSenderId: '311650113055'
   }
 };
