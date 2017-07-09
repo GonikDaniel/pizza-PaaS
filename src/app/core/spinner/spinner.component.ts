@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
-import { LoggerService } from '../logger.service';
+// import { LoggerService } from '../logger/logger.service';
 import { SpinnerState, SpinnerService } from './spinner.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class SpinnerComponent implements OnDestroy, OnInit {
   private spinnerStateChanged: Subscription;
 
   constructor(
-    private loggerService: LoggerService,
+    // private loggerService: LoggerService,
     private spinnerService: SpinnerService
   ) { }
 
@@ -24,7 +24,7 @@ export class SpinnerComponent implements OnDestroy, OnInit {
     this.spinnerStateChanged = this.spinnerService.spinnerState
       .subscribe((state: SpinnerState) => {
         this.visible = state.show;
-        this.loggerService.log(`visible=${this.visible}`);
+        // this.loggerService.log(`visible=${this.visible}`);
       });
   }
 
