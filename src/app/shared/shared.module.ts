@@ -7,12 +7,9 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { environment } from '../../environments/environment.dev';
-import { FooterComponent } from './footer/footer.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
-  declarations: [FooterComponent, NavbarComponent, SidebarComponent],
+  declarations: [],
   imports: [
     CommonModule,
     FormsModule,
@@ -28,12 +25,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     ReactiveFormsModule,
     AngularFireModule,
     AngularFireDatabaseModule,
-    AngularFireAuthModule,
-
-    // layout
-    FooterComponent,
-    NavbarComponent,
-    SidebarComponent
+    AngularFireAuthModule
   ]
 })
 export class SharedModule { }

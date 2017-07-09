@@ -1,0 +1,36 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css');
+
+//variables and mixins
+@import "sass/variables";
+@import "sass/mixins";
+@import "sass/shadows";
+
+//plugin css
+@import "sass/plugins/_plugin-nouislider";
+@import "sass/plugins/_animate";
+
+// Core CSS
+@import "sass/typography";
+@import "sass/sidebar-and-main-panel";
+@import "sass/buttons";
+@import "sass/misc";
+@import "sass/inputs";
+@import "sass/forms";
+@import "sass/alerts";
+@import "sass/tables";
+@import "sass/checkboxes";
+@import "sass/radios";
+@import "sass/togglebutton";
+@import "sass/ripples";
+@import "sass/pills";
+@import "sass/dialogs";
+@import "sass/navbars";
+@import "sass/popups";
+@import "sass/footers";
+
+// Fancy Stuff
+@import "sass/dropdown";
+@import "sass/cards";
+@import "sass/tabs";
+@import "sass/chartist";
+@import "sass/responsive";
