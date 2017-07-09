@@ -1,14 +1,16 @@
 <!-- <div class="row columns"> -->
 <div class="wrapper">
   <div class="sidebar" data-color='red' data-image="">
-    <paas-sidebar></paas-sidebar>
+    <paas-sidebar *ngIf="false"></paas-sidebar>
     <div class="sidebar-background" style="background-image: url(../assets/img/bg.jpg)"></div>
   </div>
   <div class="main-panel">
     <paas-navbar></paas-navbar>
-    <!-- <router-outlet></router-outlet> -->
-    <div class="main-content" style="height: 650px;">
-      <div class="container-fluid"></div>
+
+    <div class="main-content">
+      <div class="container-fluid">
+        <router-outlet></router-outlet>
+      </div>
     </div>
 
     <paas-footer></paas-footer>
