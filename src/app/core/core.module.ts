@@ -9,11 +9,20 @@ import { TitleComponent }    from './title.component';
 import { UserService }       from './user.service';
 import { UserServiceConfig } from './user.service';
 
+import { LoggerService } from './logger.service';
+// import { NavComponent } from './nav/nav.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { SpinnerService } from './spinner/spinner.service';
+
 @NgModule({
-  imports:      [ CommonModule ],
-  declarations: [ TitleComponent ],
-  exports:      [ TitleComponent ],
-  providers:    [ UserService ]
+  imports: [CommonModule],
+  declarations: [TitleComponent],
+  exports: [TitleComponent],
+  providers: [
+    UserService,
+    LoggerService,
+    SpinnerService
+  ]
 })
 export class CoreModule {
 
