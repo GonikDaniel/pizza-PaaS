@@ -12,6 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
+  declarations: [FooterComponent, NavbarComponent, SidebarComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -28,7 +29,11 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     AngularFireModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-  ],
-  declarations: [FooterComponent, NavbarComponent, SidebarComponent]
+
+    // layout
+    FooterComponent,
+    NavbarComponent,
+    SidebarComponent
+  ]
 })
 export class SharedModule { }

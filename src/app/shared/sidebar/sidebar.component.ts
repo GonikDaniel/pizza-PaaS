@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ROUTES } from '../routes/sidebar-routes.config';
 
 @Component({
   selector: 'paas-sidebar',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
+    public menuItems: any[];
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+    ngOnInit() {
+      this.menuItems = ROUTES.filter(menuItem => menuItem);
+    }
 }
+

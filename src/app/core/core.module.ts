@@ -5,20 +5,22 @@ import {
 
 import { CommonModule } from '@angular/common';
 
-import { TitleComponent } from './title.component';
-import { UserService } from './user.service';
-import { UserServiceConfig } from './user.service';
+import { UserService } from './user/user.service';
+import { UserServiceConfig } from './user/user.service';
 
-import { LoggerService } from './logger.service';
-// import { NavComponent } from './nav/nav.component';
+import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './_guards/auth.guard';
+import { LoggerService } from './logger/logger.service';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerService } from './spinner/spinner.service';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [TitleComponent],
-  exports: [TitleComponent],
+  declarations: [],
+  exports: [],
   providers: [
+    AuthService,
+    AuthGuard,
     UserService,
     LoggerService,
     SpinnerService
