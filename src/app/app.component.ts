@@ -39,7 +39,7 @@ export class AppComponent {
   }
 
   chatSend(theirMessage: string) {
-    this.items.push({ message: theirMessage, name: this.user.displayName});
+    this.items.push({ message: theirMessage, name: this.user.displayName });
     this.msgVal = '';
   }
 
