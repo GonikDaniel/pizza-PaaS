@@ -5,6 +5,8 @@
   <title>PizzaPaaS</title>
   <base href="/">
 
+  <!-- for inline script you can add 'unsafe-inline'; -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline' cdnjs.cloudflare.com *.googleapis.com; font-src 'self' *.googleapis.com *.gstatic.com data:; img-src * data:; connect-src ws: http:; frame-src 'none'">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link media="all" type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/css/foundation-flex.min.css">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,500" rel="stylesheet">
