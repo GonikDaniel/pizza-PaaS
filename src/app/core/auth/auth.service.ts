@@ -19,14 +19,40 @@ export class AuthService {
   }
 
   /**
+   * Logs the user in using their Email/Password combo
+   * @param email
+   * @param password
+   * @returns {firebase.Promise<FirebaseAuthState>}
+   */
+  public loginWithEmail({ email, password }) {
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password);
+  }
+
+  /**
    * Logs the user in using one of providers (google, facebook, twitter)
    * @param provider
    * @returns {firebase.Promise<FirebaseAuthState>}
    */
-  public loginWithProvider(provider) {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-    this.afAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
+  public loginWithProvider(provider: string) {
+    let firebaseProvider;
+    switch (provider) {
+      case 'facebook':
+        firebaseProvider = new firebase.auth.FacebookAuthProvider();
+        break;
+      case 'google':
+        firebaseProvider = new firebase.auth.GoogleAuthProvider();
+        break;
+      case 'twitter':
+        firebaseProvider = new firebase.auth.TwitterAuthProvider();
+        break;
+      default:
+        throw new Error(`Wrong login provider: ${provider}`);
+    }
+    return this.afAuth.auth.signInWithPopup(firebaseProvider);
+  }
+
+  public logout() {
+    this.afAuth.auth.signOut();
   }
 
   /**
@@ -37,48 +63,6 @@ export class AuthService {
    */
   public registerUser({ email, password }) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
-  }
-
-  /**
-   * Saves information to display to screen when user is logged in
-   * @param uid
-   * @param name
-   * @param email
-   * @returns {firebase.Promise<void>}
-   */
-  public saveUserInfoFromForm(uid, name, email) {
-    // return this.afAuth.database.object(`registeredUsers/${uid}`).set({
-    //   name: name,
-    //   email: email,
-    // });
-  }
-
-   /**
-   * Logs the user in using their Email/Password combo
-   * @param email
-   * @param password
-   * @returns {firebase.Promise<FirebaseAuthState>}
-   */
-  public loginWithEmail({ email, password }) {
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password);
-  }
-
-  public loginWithCredentials(userModel) {
-    console.log(userModel, typeof userModel, userModel.prototype);
-    return Observable.create(observer => {
-      observer.next(false);
-      // let result;
-      // if (authenticatedUser && authenticatedUser.password === password){
-      //   localStorage.setItem('user', authenticatedUser.username);
-      //   observer.next(true);
-      // }
-      // observer.error('Wrong username or password!');
-
-    });
-  }
-
-  public logout() {
-    this.afAuth.auth.signOut();
   }
 
 }
