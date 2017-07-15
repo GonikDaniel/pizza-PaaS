@@ -36,7 +36,6 @@ export class AuthService {
    * @returns {firebase.Promise<void>}
    */
   public registerUser({ email, password }) {
-    console.log(email)
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
   }
 

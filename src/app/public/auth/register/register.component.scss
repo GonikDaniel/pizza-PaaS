@@ -1,6 +1,10 @@
 $white-color: #FFFFFF !default;
 .card-signup {
   max-width: 320px;
+
+  .header {
+    padding-top: 10px;
+  }
 }
 
 .login-link {

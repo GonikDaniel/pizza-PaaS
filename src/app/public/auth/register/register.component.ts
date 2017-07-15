@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
     });
 
     // this.user.valueChanges.subscribe(console.log);
-    this.user.statusChanges.subscribe(() => console.log(this.user.errors))
+    // this.user.statusChanges.subscribe(() => console.log(this.user.errors))
   }
 
   public register() {
@@ -36,19 +36,8 @@ export class RegisterComponent implements OnInit {
     }
 
     this.authService.registerUser(this.user.value)
-      .then(console.log)
-      // .subscribe(
-      //   (user) => this.loginWithCredentials(user.email, user.password),
-      //   (error) => console.error(error)
-      // );
-  }
-
-  private loginWithCredentials(email, password) {
-    this.authService.loginWithCredentials({ email, password })
-      .subscribe(
-        (data) => this.router.navigate(['/app/catalogue']), // this.returnUrl
-        (error) => this.errorMsg = error
-      );
+      .then((user) => this.router.navigate(['/app/catalogue']))
+      .catch(error => this.errorMsg = error);
   }
 
   // private uniqueEmail(formControl: FormControl) {

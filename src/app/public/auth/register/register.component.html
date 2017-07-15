@@ -3,6 +3,21 @@
     <div class="card card-signup" data-background-color="orange">
 
       <form class="form" role="form" (submit)="register()" [formGroup]="user">
+        <div class="alert alert-danger" role="alert" *ngIf="errorMsg">
+          <div class="container">
+            <div class="alert-icon">
+              <i class="fa fa-exclamation-triangle"></i>
+            </div>
+            {{ errorMsg.message }}
+            <button type="button" class="close"
+                    data-dismiss="alert" aria-label="Close"
+                    (click)="errorMsg = null">
+              <span aria-hidden="true">
+                <i class="fa fa-times"></i>
+              </span>
+            </button>
+          </div>
+        </div>
         <div class="header header-primary text-center">
           <h4 class="title title-up">Sign Up</h4>
           <div class="social-line">
