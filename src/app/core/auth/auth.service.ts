@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app'; // app and typings
@@ -16,11 +17,25 @@ export class AuthService {
     });
   }
 
-  login() {
+  public login() {
     this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
   }
 
-  logout() {
+  public loginWithCredentials(userModel) {
+    console.log(userModel, typeof userModel, userModel.prototype);
+    return Observable.create(observer => {
+      observer.next(false);
+      // let result;
+      // if (authenticatedUser && authenticatedUser.password === password){
+      //   localStorage.setItem('user', authenticatedUser.username);
+      //   observer.next(true);
+      // }
+      // observer.error('Wrong username or password!');
+
+    });
+  }
+
+  public logout() {
     this.afAuth.auth.signOut();
   }
 

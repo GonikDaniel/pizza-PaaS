@@ -5,6 +5,11 @@ import {
 
 import { CommonModule } from '@angular/common';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../../environments/environment.dev';
+
 import { UserService } from './user/user.service';
 import { UserServiceConfig } from './user/user.service';
 
@@ -15,9 +20,19 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerService } from './spinner/spinner.service';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    // you can pass 'my-app-name' as a second param
+    AngularFireModule.initializeApp(environment.firebase), // imports firebase/app needed for everything
+    AngularFireDatabaseModule, // imports firebase/database, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+  ],
   declarations: [],
-  exports: [],
+  exports: [
+    AngularFireModule,
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
+  ],
   providers: [
     AuthService,
     AuthGuard,
