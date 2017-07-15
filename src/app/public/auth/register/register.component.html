@@ -1,7 +1,8 @@
 <div class="container">
   <div class="col-md-4 content-center">
     <div class="card card-signup" data-background-color="orange">
-      <form class="form" method="" action="">
+
+      <form class="form" role="form" (submit)="register()" [formGroup]="user">
         <div class="header header-primary text-center">
           <h4 class="title title-up">Sign Up</h4>
           <div class="social-line">
@@ -21,17 +22,22 @@
             <span class="input-group-addon">
               <i class="fa fa-user"></i>
             </span>
-            <input type="text" class="form-control" placeholder="First Name..."></div>
+            <input type="text" class="form-control" placeholder="Your Name..."
+                   formControlName="userName">
+          </div>
           <div class="input-group form-group-no-border">
             <span class="input-group-addon">
               <i class="fa fa-envelope-o"></i>
             </span>
-            <input type="text" class="form-control" placeholder="Email..."></div>
+            <input type="text" class="form-control" placeholder="Email..."
+                   formControlName="email">
+          </div>
           <div class="input-group form-group-no-border">
             <span class="input-group-addon">
               <i class="fa fa-unlock-alt"></i>
             </span>
-            <input type="password" placeholder="Password..." class="form-control" />
+            <input type="password" placeholder="Password..." class="form-control"
+                   formControlName="password">
           </div>
           <!-- If you want to add a checkbox to this form, uncomment this code -->
           <!-- <div class="checkbox">
@@ -40,12 +46,17 @@
           </div> -->
         </div>
         <div class="footer text-center">
-          <a href="" class="btn btn-simple btn-round btn-white btn-lg">Signup</a>
-          <a routerLink="/app/auth/login" class="btn btn-simple btn-round btn-white btn-lg">
-            Signin
-          </a>
+          <a (click)="register()" class="btn btn-simple btn-round btn-white btn-lg">Signup</a>
         </div>
       </form>
+      <div class="login-link">
+        <h6>
+          <a routerLink="/app/auth/login" class="link" href="#">
+            Login
+          </a>
+        </h6>
+      </div>
+
     </div>
   </div>
 </div>

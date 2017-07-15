@@ -1,0 +1,13 @@
+$white-color: #FFFFFF !default;
+.card-signup {
+  max-width: 320px;
+}
+
+.login-link {
+  margin: -15px 0 15px 0;
+  .link {
+    font-size: 12px;
+    color: $white-color;
+    text-decoration: none;
+  }
+}

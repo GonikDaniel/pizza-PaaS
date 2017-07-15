@@ -12,13 +12,56 @@ export class AuthService {
   constructor(private afAuth: AngularFireAuth) {
     this.afAuth.authState.subscribe(user => {
       if (user) {
+        console.log('Authservice user: ', user);
         this.user = user;
       }
     });
   }
 
-  public login() {
+  /**
+   * Logs the user in using one of providers (google, facebook, twitter)
+   * @param provider
+   * @returns {firebase.Promise<FirebaseAuthState>}
+   */
+  public loginWithProvider(provider) {
     this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    this.afAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
+  }
+
+  /**
+   * Calls the AngularFire2 service to register a new user
+   * @param email
+   * @param password
+   * @returns {firebase.Promise<void>}
+   */
+  public registerUser({ email, password }) {
+    console.log(email)
+    return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
+  }
+
+  /**
+   * Saves information to display to screen when user is logged in
+   * @param uid
+   * @param name
+   * @param email
+   * @returns {firebase.Promise<void>}
+   */
+  public saveUserInfoFromForm(uid, name, email) {
+    // return this.afAuth.database.object(`registeredUsers/${uid}`).set({
+    //   name: name,
+    //   email: email,
+    // });
+  }
+
+   /**
+   * Logs the user in using their Email/Password combo
+   * @param email
+   * @param password
+   * @returns {firebase.Promise<FirebaseAuthState>}
+   */
+  public loginWithEmail({ email, password }) {
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
 
   public loginWithCredentials(userModel) {

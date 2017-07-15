@@ -26,15 +26,16 @@ export class LoginComponent implements OnInit {
     });
 
     // this.user.valueChanges.subscribe(console.log);
-    this.user.statusChanges.subscribe(() => console.log(this.user.errors))
+    // this.user.statusChanges.subscribe(() => console.log(this.user.errors))
   }
 
   login() {
-    this.authService.loginWithCredentials(this.user.value)
-      .subscribe(
-        (data) => this.router.navigate(['/app/catalogue']), // this.returnUrl
-        (error) => this.errorMsg = error
-      );
+    this.authService.loginWithEmail(this.user.value)
+      .then(console.log)
+      // .subscribe(
+      //   (data) => this.router.navigate(['/app/catalogue']), // this.returnUrl
+      //   (error) => this.errorMsg = error
+      // );
   }
 
 }
