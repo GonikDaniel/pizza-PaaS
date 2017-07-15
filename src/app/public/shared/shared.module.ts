@@ -7,9 +7,10 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { environment } from '../../environments/environment.dev';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [LayoutComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -25,7 +26,10 @@ import { environment } from '../../environments/environment.dev';
     ReactiveFormsModule,
     AngularFireModule,
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+
+    // layout
+    LayoutComponent
   ]
 })
 export class SharedModule { }
