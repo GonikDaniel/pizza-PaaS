@@ -55,8 +55,12 @@ export class AuthService {
     return this.afAuth.auth.signInWithPopup(firebaseProvider);
   }
 
-  public logout() {
-    this.afAuth.auth.signOut();
+  /**
+   * Logs out the user
+   * @returns {firebase.Promise<any>}
+   */
+  public logout(): firebase.Promise<any> {
+    return this.afAuth.auth.signOut();
   }
 
   /**
