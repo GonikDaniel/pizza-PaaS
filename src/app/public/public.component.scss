@@ -1,4 +1,4 @@
-.page-header{
+.page-header {
   // height: 100vh;
   max-height: 1050px;
   padding: 0;
@@ -8,7 +8,8 @@
   background-position: center center;
   background-size: cover;
 
-  .page-header-image{
+  .page-header-image {
+    background-image: url(../../assets/img/login-bg.jpg);
     position: absolute;
     background-size: cover;
     background-position: center center;
