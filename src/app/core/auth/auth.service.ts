@@ -18,7 +18,7 @@ export class AuthService {
     });
   }
 
-  get isAuthenticated(): Boolean {
+  get isAuthenticated(): boolean {
     return this.user !== null;
   }
 

@@ -19,7 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "paas",
       "styles": [
-        "styles.scss"
+        "scss/style.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

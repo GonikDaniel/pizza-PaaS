@@ -1,46 +1,48 @@
-<div class="container">
-  <div class="col-md-4 content-center">
-    <div class="card card-login card-plain">
+<div class="app flex-row align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card-group mb-0">
+          <div class="card p-4">
+            <div class="card-block">
+              <div class="header header-primary text-center">
+                <h1>Login</h1>
+                <p class="text-muted">Sign In to your account</p>
+                <div class="logo-container">
+                  <img src="../../../assets/img/logo.png" alt="">
+                </div>
+              </div>
 
-      <form role="form" class="form" (submit)="login()" [formGroup]="user">
-        <div class="header header-primary text-center">
-          <div class="logo-container">
-            <img src="../../../assets/img/logo.png" alt="">
-          </div>
-        </div>
-        <div class="content">
-          <div class="input-group form-group-no-border input-lg">
-            <span class="input-group-addon">
-              <i class="fa fa-user"></i>
-            </span>
-            <input type="text" class="form-control" placeholder="Email..." autofocus="autofocus"
-                   formControlName="email">
-          </div>
-          <div class="input-group form-group-no-border input-lg">
-            <span class="input-group-addon">
-              <i class="fa fa-lock"></i>
-            </span>
-            <input type="password" placeholder="Password..." class="form-control"
-                   formControlName="password">
-          </div>
-        </div>
-        <div class="footer text-center">
-          <a (click)="login()" class="btn btn-primary btn-round btn-lg btn-block">
-            Login
-          </a>
-        </div>
-        <div class="pull-left">
-          <h6>
-            <a routerLink="/app/auth/register" class="link">Create Account</a>
-          </h6>
-        </div>
-        <!-- <div class="pull-right">
-          <h6>
-            <a href="#" class="link">Need Help?</a>
-          </h6>
-        </div> -->
-      </form>
+              <form role="form" class="form" (submit)="login()" [formGroup]="user">
+                <div class="input-group mb-3">
+                  <span class="input-group-addon"><i class="icon-user"></i></span>
+                  <input type="text" class="form-control" placeholder="Email"
+                         formControlName="email">
+                </div>
+                <div class="input-group mb-4">
+                  <span class="input-group-addon"><i class="icon-lock"></i></span>
+                  <input type="password" class="form-control" placeholder="Password"
+                         formControlName="password">
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <button type="submit" class="btn btn-primary px-4" (click)="login()">
+                      Login
+                    </button>
+                  </div>
+                  <div class="col-6 text-right">
+                    <!-- <button type="button" class="btn btn-link px-0 py-0">Forgot password?</button> -->
+                    <button type="button" class="btn btn-link px-0 py-0" routerLink="/app/auth/register">
+                      No yet registered?
+                    </button>
+                  </div>
+                </div>
+              </form>
 
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
