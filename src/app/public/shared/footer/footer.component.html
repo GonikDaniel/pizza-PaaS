@@ -1,24 +1,7 @@
-<footer class="footer">
-  <div class="container">
-    <nav>
-      <ul>
-        <li>
-          <a href="" routerLink="/app/about">About</a>
-        </li>
-        <li>
-          <a href="" routerLink="/app/contact">Contact</a>
-        </li>
-        <li>
-          <a href="https://github.com/GonikDaniel/pizza-PaaS/blob/master/LICENSE" target="_blank">
-            MIT License
-        </a>
-        </li>
-      </ul>
-    </nav>
-    <div class="copyright">
-      &copy;
-      {{ date | date: 'yyyy' }}
-      <a href="https://github.com/GonikDaniel" target="_blank">Gonik Daniel</a>
-    </div>
-  </div>
+<footer class="app-footer">
+  <a href="" routerLink="/app/contact">Contact</a>
+  <span class="float-right">
+    <a href="https://github.com/GonikDaniel" target="_blank">Gonik Daniel</a>
+    &copy; {{ date | date: 'yyyy' }}
+  </span>
 </footer>

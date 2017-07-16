@@ -1,12 +1,12 @@
 <div class="app flex-row align-items-center">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-6">
+      <div class="col-md-5">
         <div class="card-group mb-0">
           <div class="card p-4">
             <div class="card-block">
               <div class="header header-primary text-center">
-                <h1>Login</h1>
+                <h1 class="text-muted">Login</h1>
                 <p class="text-muted">Sign In to your account</p>
                 <div class="logo-container">
                   <img src="../../../assets/img/logo.png" alt="">
@@ -16,7 +16,7 @@
               <form role="form" class="form" (submit)="login()" [formGroup]="user">
                 <div class="input-group mb-3">
                   <span class="input-group-addon"><i class="icon-user"></i></span>
-                  <input type="text" class="form-control" placeholder="Email"
+                  <input type="text" class="form-control" placeholder="Email" paasAutofocus
                          formControlName="email">
                 </div>
                 <div class="input-group mb-4">
