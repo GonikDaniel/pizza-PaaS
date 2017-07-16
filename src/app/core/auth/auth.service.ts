@@ -33,7 +33,7 @@ export class AuthService {
    * @param provider
    * @returns {firebase.Promise<FirebaseAuthState>}
    */
-  public loginWithProvider(provider: string) {
+  public loginWithProvider(provider: string): firebase.Promise<any> {
     let firebaseProvider;
     switch (provider) {
       case 'facebook':

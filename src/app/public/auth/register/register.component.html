@@ -21,15 +21,18 @@
         <div class="header header-primary text-center">
           <h4 class="title title-up">Sign Up</h4>
           <div class="social-line">
-            <a href="" class="btn btn-neutral btn-twitter btn-icon btn-icon-mini">
+            <button class="btn btn-neutral btn-twitter btn-icon btn-icon-mini"
+                    (click)="registerWithProvider($event, 'twitter')">
               <i class="fa fa-twitter"></i>
-            </a>
-            <a href="" class="btn btn-neutral btn-facebook btn-icon">
+            </button>
+            <button class="btn btn-neutral btn-facebook btn-icon"
+                    (click)="registerWithProvider($event, 'facebook')">
               <i class="fa fa-facebook-square"></i>
-            </a>
-            <a href="" class="btn btn-neutral btn-google btn-icon btn-icon-mini">
+            </button>
+            <button class="btn btn-neutral btn-google btn-icon btn-icon-mini"
+                    (click)="registerWithProvider($event, 'google')">
               <i class="fa fa-google-plus"></i>
-            </a>
+            </button>
           </div>
         </div>
         <div class="content">

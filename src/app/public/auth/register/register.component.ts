@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
     // this.user.statusChanges.subscribe(() => console.log(this.user.errors))
   }
 
-  public register() {
+  public register(): void {
     if (!this.user.valid) {
       return;
     }
@@ -44,7 +44,15 @@ export class RegisterComponent implements OnInit {
       .catch(error => this.errorMsg = error);
   }
 
-  private validateUniqueEmail(formControl: FormControl) {
+  public registerWithProvider(event: MouseEvent, provider: string): void {
+    event.preventDefault();
+
+    this.authService.loginWithProvider(provider)
+      .then((user) => this.router.navigate(['/app/catalogue']))
+      .catch(error => this.errorMsg = error);
+  }
+
+  private validateUniqueEmail(formControl: FormControl): Observable<any> {
     return Observable.fromPromise(
         this.authService.validateUniqueEmail(formControl.value)
       )
