@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { AlertModule } from 'ngx-bootstrap/alert';
+
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthComponent } from './auth.component';
@@ -14,6 +16,9 @@ import { LogoutComponent } from './logout/logout.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+
+    AlertModule,
+
     AuthRoutingModule
   ],
   declarations: [ LoginComponent, RegisterComponent, AuthComponent, LogoutComponent ],

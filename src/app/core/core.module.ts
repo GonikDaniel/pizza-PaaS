@@ -15,6 +15,7 @@ import { UserServiceConfig } from './user/user.service';
 
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './_guards/auth.guard';
+import { SignInGuard } from './_guards/signin.guard';
 import { LoggerService } from './logger/logger.service';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerService } from './spinner/spinner.service';
@@ -36,6 +37,7 @@ import { SpinnerService } from './spinner/spinner.service';
   providers: [
     AuthService,
     AuthGuard,
+    SignInGuard,
     UserService,
     LoggerService,
     SpinnerService

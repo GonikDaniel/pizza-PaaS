@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { SignInGuard } from './../../core/_guards/signin.guard';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
@@ -10,6 +11,7 @@ export const routes: Routes = [
   {
     path: '',
     component: AuthComponent,
+    canActivate: [SignInGuard],
     children: [
       { path: '', redirectTo: '/app/auth/login', pathMatch: 'full' },
       {

@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 import { NAV_DROPDOWN_DIRECTIVES } from './nav-dropdown.directive';
 import { SIDEBAR_TOGGLE_DIRECTIVES } from './sidebar.directive';
@@ -25,7 +26,8 @@ import { AutofocusDirective } from './autofocus.directive';
 
     // 3rd party modules
     BsDropdownModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    AlertModule.forRoot()
   ],
   exports: [
     CommonModule,
@@ -37,7 +39,8 @@ import { AutofocusDirective } from './autofocus.directive';
     AutofocusDirective,
 
     BsDropdownModule,
-    TabsModule
+    TabsModule,
+    AlertModule
   ]
 })
 export class SharedModule { }

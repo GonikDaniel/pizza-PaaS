@@ -15,12 +15,6 @@ export class AuthComponent implements OnInit {
     private router: Router
   ) { }
 
-  // TODO: наверное тут лучше guard все же..
-  // + можно смотреть откуда пришел и редиректить обратно
-  ngOnInit() {
-    // if (this.authService.isAuthenticated) {
-    //   this.router.navigate(['/app/catalogue']);
-    // }
-  }
+  ngOnInit() {}
 
 }

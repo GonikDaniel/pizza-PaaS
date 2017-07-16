@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.formBuilder.group({
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
 
@@ -29,13 +29,10 @@ export class LoginComponent implements OnInit {
     // this.user.statusChanges.subscribe(() => console.log(this.user.errors))
   }
 
-  login() {
+  login(): void {
     this.authService.loginWithEmail(this.user.value)
-      .then(console.log)
-      // .subscribe(
-      //   (data) => this.router.navigate(['/app/catalogue']), // this.returnUrl
-      //   (error) => this.errorMsg = error
-      // );
+      .then(authState => this.router.navigate(['/app/catalogue']))
+      .catch(error => this.errorMsg = error);
   }
 
 }
