@@ -9,17 +9,14 @@ export class AuthService {
 
   private user: Object | null = null;
 
-  constructor(private afAuth: AngularFireAuth) {
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
-        console.log('Authservice user: ', user);
-        this.user = user;
-      }
-    });
-  }
+  constructor(private afAuth: AngularFireAuth) {}
 
-  get isAuthenticated(): boolean {
-    return this.user !== null;
+  /**
+   * Returns subscription to user state
+   * @returns {Observable<firebase.User>}
+   */
+  get authState(): Observable<firebase.User> {
+    return this.afAuth.authState;
   }
 
   /**

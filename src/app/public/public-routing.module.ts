@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { PublicComponent } from './public.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/app/catalogue', pathMatch: 'full' },
   {
     path: 'app',
     component: PublicComponent,

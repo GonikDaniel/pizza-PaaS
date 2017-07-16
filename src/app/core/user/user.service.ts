@@ -5,27 +5,40 @@
 // after each lazy load and the userName would double up.
 
 import { Injectable, Optional } from '@angular/core';
+import { AuthService } from './../auth/auth.service';
 
 let nextId = 1;
 
 export class UserServiceConfig {
-  userName = 'Philip Marlowe';
+  settings = {};
 }
 
 @Injectable()
 export class UserService {
   id = nextId++;
-  private _userName = 'Sherlock Holmes';
+  private _settings;
+  private _user;
 
-  constructor(@Optional() config: UserServiceConfig) {
+  constructor(
+    @Optional() config: UserServiceConfig,
+    private authService: AuthService
+  ) {
     if (config) {
-      this._userName = config.userName;
+      this._settings = config.settings;
     }
+    this.authService.authState.subscribe(user => {
+      if (user) {
+        console.log('UserService got user: ', user);
+        this._user = user;
+      }
+    });
   }
 
-  get userName() {
+  get config() {
     // Demo: add a suffix if this service has been created more than once
-    const suffix = this.id > 1 ? ` times ${this.id}` : '';
-    return this._userName + suffix;
+    if (this.id > 1) {
+      console.log(`user class initialized more than one time (${this.id})`);
+    }
+    return this._settings;
   }
 }
