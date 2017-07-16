@@ -3,17 +3,30 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { TabsModule } from 'ngx-bootstrap/tabs';
+
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { AsideComponent } from './aside/aside.component';
+import { SharedModule } from './../../public/shared/shared.module';
 
 @NgModule({
-  declarations: [FooterComponent, NavbarComponent, SidebarComponent],
+  declarations: [
+    FooterComponent,
+    NavbarComponent,
+    SidebarComponent,
+    AsideComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+
+    SharedModule,
+
+    TabsModule
   ],
   exports: [
     CommonModule,
@@ -23,7 +36,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     // layout
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    AsideComponent
   ]
 })
-export class SharedModule { }
+export class LayoutModule { }
