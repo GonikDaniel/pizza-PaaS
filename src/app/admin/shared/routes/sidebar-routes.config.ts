@@ -6,5 +6,6 @@ export const ROUTES: RouteInfo[] = [
   { path: 'categories', title: 'Categories', icon: 'sort', class: '' },
   { path: 'tags', title: 'Tags', icon: 'label_outline', class: '' },
   { path: 'billing', title: 'Billing', icon: 'attach_money', class: '' },
-  { path: 'user', title: 'Profile', icon: 'person', class: '' }
+  { path: 'user', title: 'Profile', icon: 'person', class: '' },
+  { path: '/app/auth/logout', title: 'Logout', icon: 'directions_run', class: 'logout' }
 ];

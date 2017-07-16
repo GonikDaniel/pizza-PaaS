@@ -7,7 +7,7 @@ import * as firebase from 'firebase/app'; // app and typings
 @Injectable()
 export class AuthService {
 
-  private user: any;
+  private user: Object | null = null;
 
   constructor(private afAuth: AngularFireAuth) {
     this.afAuth.authState.subscribe(user => {
@@ -16,6 +16,10 @@ export class AuthService {
         this.user = user;
       }
     });
+  }
+
+  get isAuthorized(): Boolean {
+    return this.user !== null;
   }
 
   /**

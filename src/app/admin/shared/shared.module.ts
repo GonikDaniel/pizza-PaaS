@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
 
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -12,6 +13,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule
   ],
   exports: [
     CommonModule,

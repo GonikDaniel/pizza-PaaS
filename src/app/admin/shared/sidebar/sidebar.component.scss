@@ -1,0 +1,16 @@
+.sidebar .nav>li.logout {
+  position: absolute;
+  width: 100%;
+  bottom: 10px;
+}
+
+@media (max-width: 991px) {
+  .sidebar .nav>li.logout {
+    position: relative;
+    width: 100%;
+    bottom: 10px;
+  }
+  .sidebar .nav>li.logout>a {
+    margin-top: 20px;
+  }
+}
