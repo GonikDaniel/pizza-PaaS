@@ -14,6 +14,12 @@ import { BreadcrumbsComponent } from '../shared/breadcrumb.component';
 import { NAV_DROPDOWN_DIRECTIVES } from '../shared/nav-dropdown.directive';
 
 import { AdminComponent } from './admin.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { OrdersComponent } from './orders/orders.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { TagsComponent } from './tags/tags.component';
+import { BillingComponent } from './billing/billing.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -28,6 +34,12 @@ import { AdminComponent } from './admin.component';
   ],
   declarations: [
     AdminComponent,
+    DashboardComponent,
+    OrdersComponent,
+    CategoriesComponent,
+    TagsComponent,
+    BillingComponent,
+    ProfileComponent,
 
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
