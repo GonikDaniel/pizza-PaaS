@@ -7,8 +7,8 @@ import { StaticModule } from './static/static.module';
 import { CoreModule } from './core/core.module';
 import { AdminModule } from './admin/admin.module';
 import { PublicModule } from './public/public.module';
-
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
