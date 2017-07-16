@@ -11,6 +11,4 @@ export class AutofocusDirective implements AfterViewChecked {
     this.renderer.invokeElementMethod(this.el.nativeElement, 'focus', []);
   }
 
-  ngOnInit() {}
-
 }

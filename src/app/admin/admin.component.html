@@ -1,20 +1,22 @@
-<paas-navbar></paas-navbar>
+<div class="app">
+  <paas-navbar></paas-navbar>
 
-<div class="app-body">
-  <paas-sidebar></paas-sidebar>
+  <div class="app-body">
+    <paas-sidebar></paas-sidebar>
 
-  <!-- Main content -->
-  <main class="main">
-    <ol class="breadcrumb mb-0">
-      <!-- <paas-breadcrumbs></paas-breadcrumbs> -->
-    </ol>
+    <!-- Main content -->
+    <main class="main">
+      <ol class="breadcrumb mb-0">
+        <!-- <paas-breadcrumbs></paas-breadcrumbs> -->
+      </ol>
 
-    <div class="container-fluid">
-      <router-outlet></router-outlet>
-    </div>
-  </main>
+      <div class="container-fluid">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
 
-  <paas-aside></paas-aside>
+    <!-- <paas-aside></paas-aside> -->
+  </div>
+
+  <paas-footer></paas-footer>
 </div>
-
-<paas-footer></paas-footer>

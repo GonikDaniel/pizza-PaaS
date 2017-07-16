@@ -110,7 +110,7 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "paas",
       "camelCase"
     ],
     "component-selector": [

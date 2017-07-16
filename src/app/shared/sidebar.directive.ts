@@ -4,7 +4,7 @@ import { Directive, HostListener } from '@angular/core';
 * Allows the sidebar to be toggled via click.
 */
 @Directive({
-  selector: '[appSidebarToggler]'
+  selector: '[paasSidebarToggler]'
 })
 export class SidebarToggleDirective {
   constructor() { }
@@ -17,7 +17,7 @@ export class SidebarToggleDirective {
 }
 
 @Directive({
-  selector: '[appSidebarMinimizer]'
+  selector: '[paasSidebarMinimizer]'
 })
 export class SidebarMinimizeDirective {
   constructor() { }
@@ -30,7 +30,7 @@ export class SidebarMinimizeDirective {
 }
 
 @Directive({
-  selector: '[appMobileSidebarToggler]'
+  selector: '[paasMobileSidebarToggler]'
 })
 export class MobileSidebarToggleDirective {
   constructor() { }
@@ -51,7 +51,7 @@ export class MobileSidebarToggleDirective {
 * Allows the off-canvas sidebar to be closed via click.
 */
 @Directive({
-  selector: '[appSidebarClose]'
+  selector: '[paasSidebarClose]'
 })
 export class SidebarOffCanvasCloseDirective {
   constructor() { }
