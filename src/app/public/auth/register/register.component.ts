@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/fromPromise';
+import 'rxjs/add/operator/map';
 
 import { AuthService } from '../../../core/auth/auth.service';
 
@@ -22,8 +26,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.user = this.formBuilder.group({
       userName: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      email: ['', [Validators.required, Validators.email], this.validateUniqueEmail.bind(this)],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
 
     // this.user.valueChanges.subscribe(console.log);
@@ -40,18 +44,15 @@ export class RegisterComponent implements OnInit {
       .catch(error => this.errorMsg = error);
   }
 
-  // private uniqueEmail(formControl: FormControl) {
-  //   if (!this.userService.isEmailUnique(formControl.value)) {
-  //     return Observable.of({ uniqueEmail: { error: 'Email has to be unique!' } });
-  //   }
-  //   return Observable.of(null);
-  // }
-
-  // private uniqueUsername(formControl: FormControl) {
-  //   if (!this.userService.isUsernameUnique(formControl.value)) {
-  //     return Observable.of({ uniqueUsername: { error: 'Username has to be unique!' } });
-  //   }
-  //   return Observable.of(null);
-  // }
+  private validateUniqueEmail(formControl: FormControl) {
+    return Observable.fromPromise(
+        this.authService.validateUniqueEmail(formControl.value)
+      )
+      .map((providers: string[]) => (
+        providers.includes('password')
+          ? { uniqueEmail: { error: 'Email has to be unique!' } }
+          : null
+      ));
+  }
 
 }

@@ -65,4 +65,13 @@ export class AuthService {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
   }
 
+  /**
+   * Check email for uniqueness
+   * @param email
+   * @returns {firebase.Promise<string[]>}
+   */
+  public validateUniqueEmail(email: string): firebase.Promise<string[]> {
+    return this.afAuth.auth.fetchProvidersForEmail(email);
+  }
+
 }

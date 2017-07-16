@@ -40,6 +40,13 @@
             <input type="text" class="form-control" placeholder="Your Name..."
                    formControlName="userName">
           </div>
+          <div class="error-msg" *ngIf="user.get('userName').hasError('required') && user.get('userName').touched">
+            Username is required
+          </div>
+          <div class="error-msg" *ngIf="user.get('userName').hasError('minlength') && user.get('userName').touched">
+            Username is too short
+          </div>
+
           <div class="input-group form-group-no-border">
             <span class="input-group-addon">
               <i class="fa fa-envelope-o"></i>
@@ -47,12 +54,25 @@
             <input type="text" class="form-control" placeholder="Email..."
                    formControlName="email">
           </div>
+          <div class="error-msg" *ngIf="user.get('email').hasError('uniqueEmail') && user.get('email').invalid">
+            Email should be unique
+          </div>
+          <div class="error-msg" *ngIf="user.get('email').hasError('email') && user.get('email').touched">
+            Incorrect email format
+          </div>
+
           <div class="input-group form-group-no-border">
             <span class="input-group-addon">
               <i class="fa fa-unlock-alt"></i>
             </span>
             <input type="password" placeholder="Password..." class="form-control"
                    formControlName="password">
+          </div>
+          <div class="error-msg" *ngIf="user.get('password').hasError('required') && user.get('password').touched">
+            Password is required
+          </div>
+          <div class="error-msg" *ngIf="user.get('password').hasError('minlength') && user.get('password').touched">
+            Password is too short
           </div>
           <!-- If you want to add a checkbox to this form, uncomment this code -->
           <!-- <div class="checkbox">
@@ -61,7 +81,10 @@
           </div> -->
         </div>
         <div class="footer text-center">
-          <a (click)="register()" class="btn btn-simple btn-round btn-white btn-lg">Signup</a>
+          <button (click)="register()" class="btn btn-simple btn-round btn-white btn-lg"
+                  [disabled]="!user.valid">
+            Signup
+          </button>
         </div>
       </form>
       <div class="login-link">

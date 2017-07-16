@@ -15,3 +15,14 @@ $white-color: #FFFFFF !default;
     text-decoration: none;
   }
 }
+
+.input-group-addon {
+  padding-right: 10px !important;
+}
+
+.error-msg {
+  font-size: 11px;
+  color: #fbfbb6;
+  padding: 5px 0;
+  margin: -10px 0 0 0;
+}
