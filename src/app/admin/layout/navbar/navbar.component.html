@@ -16,7 +16,7 @@
   <ul class="nav navbar-nav ml-auto m-r-md">
     <li class="nav-item dropdown" dropdown placement="bottom right">
       <a class="nav-link nav-pill avatar" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle>
-        <img src="assets/img/avatar.jpg" class="img-avatar" alt="admin@pizza-paas.com">
+        <img [src]="user.avatar || 'assets/img/avatar.jpg'" class="img-avatar" alt="Pic">
         <span class="badge badge-pill badge-danger">9</span>
       </a>
       <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">

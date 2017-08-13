@@ -1,3 +1,4 @@
+import { UserService } from './../../../core/user/user.service';
 import { Component, OnInit } from '@angular/core';
 import { ROUTES } from '../routes/sidebar-routes.config';
 
@@ -7,12 +8,16 @@ import { ROUTES } from '../routes/sidebar-routes.config';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  public user;
   private listTitles: any[];
 
-  constructor() {
+  constructor(
+    private userService: UserService
+  ) {
   }
 
   ngOnInit() {
+    this.user = this.userService.user;
     this.listTitles = ROUTES.filter(listTitle => listTitle);
   }
 
