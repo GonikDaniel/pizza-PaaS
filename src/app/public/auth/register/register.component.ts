@@ -65,8 +65,8 @@ export class RegisterComponent implements OnInit {
   private saveUserInfo(user) {
     const name = user.displayName || this.user.value.userName;
     const email = user.email || this.user.value.email;
-    const avatar = user.photoURL || 'assets/img/avatar.jpg';
-    const country = user.country || 'noname';
+    const avatar = user.photoURL;
+    const country = user.country;
     this.userService.updateUserSession(user);
     return this.authService.saveUserInfo(user.uid, name, email, avatar, country);
   }
