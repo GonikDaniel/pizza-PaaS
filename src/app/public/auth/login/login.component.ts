@@ -1,3 +1,4 @@
+import { UserService } from './../../../core/user/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
@@ -31,7 +33,10 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.authService.loginWithEmail(this.user.value)
-      .then(authState => this.router.navigate(['/app/catalogue']))
+      .then(user => {
+        this.userService.updateUserSession(user);
+        this.router.navigate(['/app/catalogue']);
+      })
       .catch(error => this.errorMsg = error);
   }
 

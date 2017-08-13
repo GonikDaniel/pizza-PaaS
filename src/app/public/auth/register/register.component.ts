@@ -1,3 +1,4 @@
+import { UserService } from './../../../core/user/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
@@ -20,7 +21,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -40,7 +42,18 @@ export class RegisterComponent implements OnInit {
     }
 
     this.authService.registerUser(this.user.value)
-      .then((user) => this.router.navigate(['/app/catalogue']))
+      .then(user => {
+        const name = user.displayName || this.user.value.userName;
+        const email = user.email || this.user.value.email;
+        const avatar = user.photoURL || 'assets/img/avatar.jpg';
+        const country = user.country || 'noname';
+        this.userService.updateUserSession(user);
+        return this.authService.saveUserInfo(user.uid, name, email, avatar, country);
+      })
+      .then((user) => {
+        console.log(user);
+        this.router.navigate(['/app/catalogue']);
+      })
       .catch(error => this.errorMsg = error);
   }
 
@@ -48,7 +61,10 @@ export class RegisterComponent implements OnInit {
     event.preventDefault();
 
     this.authService.loginWithProvider(provider)
-      .then((user) => this.router.navigate(['/app/catalogue']))
+      .then((user) => {
+        this.userService.updateUserSession(user);
+        this.router.navigate(['/app/catalogue']);
+      })
       .catch(error => this.errorMsg = error);
   }
 

@@ -9,7 +9,6 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AsideComponent } from './aside/aside.component';
-import { SharedModule } from './../../public/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -23,8 +22,6 @@ import { SharedModule } from './../../public/shared/shared.module';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-
-    SharedModule,
 
     TabsModule
   ],

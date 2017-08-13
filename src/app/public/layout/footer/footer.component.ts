@@ -1,3 +1,4 @@
+import { UserService } from '../../../core/user/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class FooterComponent implements OnInit {
 
   public date: Date = new Date();
-  constructor() { }
+  public user;
+
+  constructor(
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
+    this.user = this.userService.user;
   }
 
 }

@@ -6,6 +6,7 @@
 
 import { Injectable, Optional } from '@angular/core';
 import { AuthService } from './../auth/auth.service';
+import * as _ from 'lodash';
 
 let nextId = 1;
 
@@ -23,15 +24,14 @@ export class UserService {
     @Optional() config: UserServiceConfig,
     private authService: AuthService
   ) {
-    if (config) {
-      this._settings = config.settings;
-    }
-    this.authService.authState.subscribe(user => {
-      if (user) {
-        console.log('UserService got user: ', user);
-        this._user = user;
-      }
-    });
+    this._settings = _.get(config, 'settings', {});
+    this.user = localStorage.getItem('user');
+    // this.authService.authState.subscribe(user => {
+    //   if (user) {
+    //     console.log('UserService got user: ', user);
+    //     this._user = user;
+    //   }
+    // });
   }
 
   get config() {
@@ -40,5 +40,22 @@ export class UserService {
       console.log(`user class initialized more than one time (${this.id})`);
     }
     return this._settings;
+  }
+
+  get publicFields() {
+    return ['displayName', 'email', 'photoURL'];
+  }
+
+  set user(userData: Object) {
+    this._user = userData;
+  }
+
+  get user() {
+    return JSON.parse(this._user);
+  }
+
+  updateUserSession(user) {
+    localStorage.setItem('user', JSON.stringify(_.pick(user, this.publicFields)));
+    this.user = localStorage.getItem('user');
   }
 }

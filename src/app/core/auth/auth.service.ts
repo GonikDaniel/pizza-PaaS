@@ -2,14 +2,19 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase/app'; // app and typings
+import * as _ from 'lodash';
 
 @Injectable()
 export class AuthService {
 
   private user: Object | null = null;
 
-  constructor(private afAuth: AngularFireAuth) {}
+  constructor(
+    private afAuth: AngularFireAuth,
+    public afDB: AngularFireDatabase
+  ) {}
 
   /**
    * Returns subscription to user state
@@ -57,6 +62,11 @@ export class AuthService {
    * @returns {firebase.Promise<any>}
    */
   public logout(): firebase.Promise<any> {
+    _.forIn(window.localStorage, (value: string, objKey: string) => {
+      if (true === _.startsWith(objKey, 'firebase:')) {
+        window.localStorage.removeItem(objKey);
+      }
+    });
     return this.afAuth.auth.signOut();
   }
 
@@ -68,6 +78,21 @@ export class AuthService {
    */
   public registerUser({ email, password }) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
+  }
+
+  /**
+   * Saves information to display to screen when user is logged in
+   * @param uid
+   * @param name
+   * @param email
+   * @param avatar
+   * @returns {firebase.Promise<void>}
+   */
+  saveUserInfo(uid: string, name: string, email: string, avatar: string, country: string) {
+    const createdAt = firebase.database.ServerValue.TIMESTAMP;
+    return this.afDB.object(`users/${uid}`).set({
+      createdAt, name, email, avatar, country
+    });
   }
 
   /**
