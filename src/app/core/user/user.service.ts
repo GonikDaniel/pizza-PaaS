@@ -5,8 +5,10 @@
 // after each lazy load and the userName would double up.
 
 import { Injectable, Optional } from '@angular/core';
-import { AuthService } from './../auth/auth.service';
+import { AngularFireDatabase } from 'angularfire2/database';
 import * as _ from 'lodash';
+
+import { AuthService } from './../auth/auth.service';
 
 let nextId = 1;
 
@@ -22,7 +24,8 @@ export class UserService {
 
   constructor(
     @Optional() config: UserServiceConfig,
-    private authService: AuthService
+    private authService: AuthService,
+    public afDB: AngularFireDatabase
   ) {
     this._settings = _.get(config, 'settings', {});
     this.user = localStorage.getItem('user');
@@ -43,7 +46,7 @@ export class UserService {
   }
 
   get publicFields() {
-    return ['displayName', 'email', 'photoURL'];
+    return ['name', 'displayName', 'email', 'photoURL', 'avatar'];
   }
 
   set user(userData: Object) {
@@ -55,7 +58,12 @@ export class UserService {
   }
 
   updateUserSession(user) {
-    localStorage.setItem('user', JSON.stringify(_.pick(user, this.publicFields)));
-    this.user = localStorage.getItem('user');
+    this.afDB.object(`users/${user.uid}`).$ref.once('value')
+      .then(snapshot => {
+        const dbUser = snapshot.val();
+        console.log(dbUser);
+        localStorage.setItem('user', JSON.stringify(_.pick(dbUser, this.publicFields)));
+        this.user = localStorage.getItem('user');
+      })
   }
 }

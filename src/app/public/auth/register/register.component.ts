@@ -43,15 +43,9 @@ export class RegisterComponent implements OnInit {
 
     this.authService.registerUser(this.user.value)
       .then(user => {
-        const name = user.displayName || this.user.value.userName;
-        const email = user.email || this.user.value.email;
-        const avatar = user.photoURL || 'assets/img/avatar.jpg';
-        const country = user.country || 'noname';
-        this.userService.updateUserSession(user);
-        return this.authService.saveUserInfo(user.uid, name, email, avatar, country);
+        return this.saveUserInfo(user);
       })
       .then((user) => {
-        console.log(user);
         this.router.navigate(['/app/catalogue']);
       })
       .catch(error => this.errorMsg = error);
@@ -61,11 +55,20 @@ export class RegisterComponent implements OnInit {
     event.preventDefault();
 
     this.authService.loginWithProvider(provider)
-      .then((user) => {
-        this.userService.updateUserSession(user);
+      .then((authData) => {
+        this.saveUserInfo(authData.user);
         this.router.navigate(['/app/catalogue']);
       })
       .catch(error => this.errorMsg = error);
+  }
+
+  private saveUserInfo(user) {
+    const name = user.displayName || this.user.value.userName;
+    const email = user.email || this.user.value.email;
+    const avatar = user.photoURL || 'assets/img/avatar.jpg';
+    const country = user.country || 'noname';
+    this.userService.updateUserSession(user);
+    return this.authService.saveUserInfo(user.uid, name, email, avatar, country);
   }
 
   private validateUniqueEmail(formControl: FormControl): Observable<any> {

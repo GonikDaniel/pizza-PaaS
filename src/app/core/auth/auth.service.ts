@@ -67,6 +67,7 @@ export class AuthService {
         window.localStorage.removeItem(objKey);
       }
     });
+    // localStorage.clear();
     return this.afAuth.auth.signOut();
   }
 
