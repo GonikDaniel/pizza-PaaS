@@ -26,7 +26,8 @@
         <img [src]="getFlag(user.country)" alt="" style="height:24px;">
       </td>
       <td class="text-center">
-        <i class="fa fa-cc-mastercard" style="font-size:24px"></i>
+        <i *ngIf="user.paymentMethod" [class]="getPaymentMethodIcon(user.paymentMethod)" style="font-size:24px"></i>
+        <span *ngIf="!user.paymentMethod">NOT SET</span>
       </td>
       <td>
         <div class="small text-muted">Last login</div>

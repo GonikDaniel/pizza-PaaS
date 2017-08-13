@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
+import * as _ from 'lodash';
+
 import countries from '../../shared/countries';
+import paymentMethods from '../../shared/payment-methods';
 
 @Component({
   selector: 'paas-dashboard',
@@ -24,14 +27,18 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
+  getAvatar(user) {
+    return user.avatar || `assets/img/avatars/${this.randomAvatarId}.jpg`;
+  }
+
   getFlag(countryCode) {
     return countryCode
       ? `assets/img/flags/${countries[countryCode]}.png`
       : 'assets/img/flags/Noname.png';
   }
 
-  getAvatar(user) {
-    return user.avatar || `assets/img/avatars/${this.randomAvatarId}.jpg`;
+  getPaymentMethodIcon(paymentMethodKey) {
+    return _.get(paymentMethods[paymentMethodKey], 'iconClass');
   }
 
   private getRandom(min, max) {
