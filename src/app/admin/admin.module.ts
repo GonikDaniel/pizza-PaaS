@@ -20,6 +20,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { TagsComponent } from './tags/tags.component';
 import { BillingComponent } from './billing/billing.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   imports: [
@@ -40,6 +41,7 @@ import { ProfileComponent } from './profile/profile.component';
     TagsComponent,
     BillingComponent,
     ProfileComponent,
+    ProductsComponent,
 
     // SIDEBAR_TOGGLE_DIRECTIVES,
     // AsideToggleDirective,

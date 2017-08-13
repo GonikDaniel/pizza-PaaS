@@ -6,6 +6,7 @@ import { AuthGuard } from '../core/_guards/auth.guard';
 import { AdminComponent } from './admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OrdersComponent } from './orders/orders.component';
+import { ProductsComponent } from './products/products.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { TagsComponent } from './tags/tags.component';
 import { BillingComponent } from './billing/billing.component';
@@ -30,6 +31,13 @@ export const routes: Routes = [
         component: OrdersComponent,
         data: {
           title: 'Orders'
+        }
+      },
+      {
+        path: 'products',
+        component: ProductsComponent,
+        data: {
+          title: 'Products'
         }
       },
       {
