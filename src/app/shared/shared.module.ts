@@ -6,19 +6,22 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { AlertModule } from 'ngx-bootstrap/alert';
 
-// import { NAV_DROPDOWN_DIRECTIVES } from './nav-dropdown.directive';
-// import { SIDEBAR_TOGGLE_DIRECTIVES } from './sidebar.directive';
-// import { AsideToggleDirective } from './aside.directive';
-// import { BreadcrumbsComponent } from './breadcrumb.component';
+import { UnderDevelopmentPanelComponent } from './under-development-panel/under-development-panel.component';
+import { NAV_DROPDOWN_DIRECTIVES } from './nav-dropdown.directive';
+import { SIDEBAR_TOGGLE_DIRECTIVES } from './sidebar.directive';
+import { AsideToggleDirective } from './aside.directive';
+import { BreadcrumbsComponent } from './breadcrumb.component';
 // import { AutofocusDirective } from './autofocus.directive';
 
 @NgModule({
   declarations: [
-    // NAV_DROPDOWN_DIRECTIVES,
-    // SIDEBAR_TOGGLE_DIRECTIVES,
-    // AsideToggleDirective,
-    // BreadcrumbsComponent,
+    NAV_DROPDOWN_DIRECTIVES,
+    SIDEBAR_TOGGLE_DIRECTIVES,
+    AsideToggleDirective,
+    BreadcrumbsComponent,
     // AutofocusDirective
+
+    UnderDevelopmentPanelComponent
   ],
   imports: [
     CommonModule,
@@ -32,15 +35,17 @@ import { AlertModule } from 'ngx-bootstrap/alert';
   exports: [
     CommonModule,
 
-    // NAV_DROPDOWN_DIRECTIVES,
-    // SIDEBAR_TOGGLE_DIRECTIVES,
-    // AsideToggleDirective,
-    // BreadcrumbsComponent,
+    NAV_DROPDOWN_DIRECTIVES,
+    SIDEBAR_TOGGLE_DIRECTIVES,
+    AsideToggleDirective,
+    BreadcrumbsComponent,
     // AutofocusDirective,
 
     BsDropdownModule,
     TabsModule,
-    AlertModule
+    AlertModule,
+
+    UnderDevelopmentPanelComponent
   ]
 })
 export class SharedModule { }
