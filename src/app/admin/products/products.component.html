@@ -45,6 +45,64 @@
           </div>
           <small class="text-muted">ex. 'Plain Cheese'</small>
         </fieldset>
+
+        <fieldset class="form-group">
+          <label>Description</label>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-list-alt"></i></span>
+            <input type="text" class="form-control" [(ngModel)]="productDescription">
+          </div>
+          <small class="text-muted">ex. 'Your basic plain cheese pizza with no toppings.\nIncludes tomato sauce, mozzarella, oregano and a sprinkling of cheddar'</small>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <label>Image</label>
+           <ng-select
+            [multiple]="false"
+            [items]="productImages"
+            (data)="refreshValue($event)"
+            (selected)="selected($event)"
+            (removed)="removed($event)"
+            placeholder="Select image...">
+          </ng-select>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" value="">
+              Has Options
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" value="">
+              Vegetarian
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <label class="m-r-sm">Sizes</label>
+          <div class="form-check form-check-inline">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" value="small"> small
+            </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" value="medium"> medium
+            </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" value="large"> large
+            </label>
+          </div>
+        </fieldset>
       </div>
 
       <div class="modal-footer">
