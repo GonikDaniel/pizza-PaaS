@@ -10,6 +10,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../../environments/environment.dev';
 
+import { BsModalService } from 'ngx-bootstrap/modal';
+
 import { UserService } from './user/user.service';
 import { UserServiceConfig } from './user/user.service';
 
@@ -40,7 +42,9 @@ import { SpinnerService } from './spinner/spinner.service';
     SignInGuard,
     UserService,
     LoggerService,
-    SpinnerService
+    SpinnerService,
+
+    BsModalService
   ]
 })
 export class CoreModule {

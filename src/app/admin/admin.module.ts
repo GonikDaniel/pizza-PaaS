@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from '../shared/shared.module';
@@ -28,6 +29,7 @@ import { ProductsComponent } from './products/products.component';
 
     BsDropdownModule,
     TabsModule,
+    ModalModule.forRoot(),
 
     LayoutModule,
     SharedModule,
