@@ -1,10 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { AlertModule } from 'ngx-bootstrap/alert';
+
+import {
+  CheckboxModule,
+  MultiSelectModule,
+  SelectButtonModule,
+  DropdownModule,
+  AutoCompleteModule,
+} from 'primeng/primeng';
 
 import { UnderDevelopmentPanelComponent } from './under-development-panel/under-development-panel.component';
 import { NAV_DROPDOWN_DIRECTIVES } from './nav-dropdown.directive';
@@ -19,21 +28,29 @@ import { BreadcrumbsComponent } from './breadcrumb.component';
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
     BreadcrumbsComponent,
-    // AutofocusDirective
+    // AutofocusDirective,
 
     UnderDevelopmentPanelComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
+    ReactiveFormsModule,
 
     // 3rd party modules
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+
+    CheckboxModule,
+    MultiSelectModule,
+    SelectButtonModule,
+    DropdownModule,
+    AutoCompleteModule,
   ],
   exports: [
     CommonModule,
+    ReactiveFormsModule,
 
     NAV_DROPDOWN_DIRECTIVES,
     SIDEBAR_TOGGLE_DIRECTIVES,
@@ -44,6 +61,12 @@ import { BreadcrumbsComponent } from './breadcrumb.component';
     BsDropdownModule,
     TabsModule,
     AlertModule,
+
+    CheckboxModule,
+    MultiSelectModule,
+    SelectButtonModule,
+    DropdownModule,
+    AutoCompleteModule,
 
     UnderDevelopmentPanelComponent
   ]

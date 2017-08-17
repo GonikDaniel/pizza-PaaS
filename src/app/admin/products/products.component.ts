@@ -1,4 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 // import { BsModalService } from 'ngx-bootstrap/modal/bs-modal.service';
 // import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 
@@ -10,8 +11,12 @@ import { Component, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core
 })
 export class ProductsComponent implements OnInit {
   // public modalRef: BsModalRef;
-  private value: any = ['pizza'];
-  public productTypes: Array<string> = ['pizza', 'salad', 'drink'];
+  public product;
+  public productTypes: Array<Object> = [
+    { label: 'Pizza', value: 'pizza' },
+    { label: 'Salad', value: 'salad' },
+    { label: 'Drink', value: 'drink' }
+  ];
   public productImages: Array<string> = [
     'amadeus.jpg',
     'asianchicken.jpg',
@@ -35,22 +40,68 @@ export class ProductsComponent implements OnInit {
     'tajmahal.jpg',
     'tomterrific.jpg'
   ];
+  public filteredImages: any[];
+  public sizesOptions = [
+    { label: 'Small', value: 'small' },
+    { label: 'Medium', value: 'medium' },
+    { label: 'Large', value: 'large' }
+  ];
   public productName;
   public productDescription;
-  constructor() {}
+  // private type: any = ['pizza'];
 
-  ngOnInit() {}
+  constructor(
+    private formBuilder: FormBuilder
+  ) {}
 
-  public selected(value:any):void {
+  ngOnInit() {
+    this.product = this.formBuilder.group({
+      type: ['pizza', [Validators.required]],
+      name: ['', [Validators.required]],
+      description: [''],
+      image: [''],
+      isVegetarian: [false],
+      hasOptions: [false],
+      sizes: [[]]
+    });
+
+    // this.product.valueChanges.subscribe(console.log);
+    // this.product.statusChanges.subscribe(() => console.log(this.product.errors))
+  }
+
+  public createProduct() {
+    console.log(this.product.value)
+  }
+
+  public filterImages(event) {
+    this.filteredImages = [];
+    for (let i = 0; i < this.productImages.length; i++) {
+      const image = this.productImages[i];
+      if (image.toLowerCase().indexOf(event.query.toLowerCase()) === 0) {
+        this.filteredImages.push(image);
+      }
+    }
+  }
+
+  public handleDropdownClick() {
+    this.filteredImages = [];
+
+    // mimic remote call
+    setTimeout(() => {
+      this.filteredImages = this.productImages;
+    }, 100)
+  }
+
+  public selected(value: any): void {
     console.log('Selected value is: ', value);
   }
 
-  public removed(value:any):void {
+  public removed(value: any): void {
     console.log('Removed value is: ', value);
   }
 
   public refreshValue(value: any): void {
-    this.value = value;
+    // this.type = value;
   }
 
   // public openModal(template: TemplateRef<any>) {

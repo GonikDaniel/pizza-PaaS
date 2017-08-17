@@ -25,91 +25,75 @@
         </button>
       </div>
       <div class="modal-body">
-        <fieldset class="form-group">
-          <label>Name</label>
-          <ng-select
-            [multiple]="false"
-            [items]="productTypes"
-            (data)="refreshValue($event)"
-            (selected)="selected($event)"
-            (removed)="removed($event)"
-            placeholder="Select type...">
-          </ng-select>
-        </fieldset>
 
-        <fieldset class="form-group">
-          <label>Name</label>
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-check"></i></span>
-            <input type="text" class="form-control" [(ngModel)]="productName">
-          </div>
-          <small class="text-muted">ex. 'Plain Cheese'</small>
-        </fieldset>
+        <form role="form" (submit)="createProduct(product)" [formGroup]="product">
+          <fieldset class="form-group">
+            <label>Type</label>
+             <p-selectButton class="form-control" [options]="productTypes" formControlName="type"></p-selectButton>
+          </fieldset>
 
-        <fieldset class="form-group">
-          <label>Description</label>
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-list-alt"></i></span>
-            <input type="text" class="form-control" [(ngModel)]="productDescription">
-          </div>
-          <small class="text-muted">ex. 'Your basic plain cheese pizza with no toppings.\nIncludes tomato sauce, mozzarella, oregano and a sprinkling of cheddar'</small>
-        </fieldset>
+          <fieldset class="form-group">
+            <label>Name</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-check"></i></span>
+               <input type="text" class="form-control" formControlName="name">
+            </div>
+            <small class="text-muted">ex. 'Plain Cheese'</small>
+          </fieldset>
 
-        <fieldset class="form-group">
-          <label>Image</label>
-           <ng-select
-            [multiple]="false"
-            [items]="productImages"
-            (data)="refreshValue($event)"
-            (selected)="selected($event)"
-            (removed)="removed($event)"
-            placeholder="Select image...">
-          </ng-select>
-        </fieldset>
+          <fieldset class="form-group">
+            <label>Description</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-list-alt"></i></span>
+               <input type="text" class="form-control" formControlName="description">
+            </div>
+            <small class="text-muted">ex. 'Your basic plain cheese pizza with no toppings.\nIncludes tomato sauce, mozzarella, oregano and a sprinkling of cheddar'</small>
+          </fieldset>
 
-        <fieldset class="form-group">
-          <div class="form-check">
-            <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" value="">
-              Has Options
-            </label>
-          </div>
-        </fieldset>
+          <fieldset class="form-group">
+            <label>Image</label>
+            <!-- <ng-select
+              [multiple]="false"
+              [items]="productImages"
+              (data)="refreshValue($event)"
+              (selected)="selected($event)"
+              (removed)="removed($event)"
+              placeholder="Select image...">
+            </ng-select> -->
 
-        <fieldset class="form-group">
-          <div class="form-check">
-            <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" value="">
-              Vegetarian
-            </label>
-          </div>
-        </fieldset>
+             <p-autoComplete class="form-control" formControlName="image" [suggestions]="filteredImages" (completeMethod)="filterImages($event)"
+                [size]="30" [minLength]="1" placeholder="Start typing" [dropdown]="true" (onDropdownClick)="handleDropdownClick($event)">
+                <ng-template let-image pTemplate="item">
+                    <div class="ui-helper-clearfix">
+                        <img src="assets/img/pizzas/{{image}}" style="width:32px;display:inline-block;margin:5px 0 2px 5px"/>
+                        <div style="font-size:18px;float:right;margin:10px 10px 0 0">
+                          {{image}}
+                        </div>
+                    </div>
+                </ng-template>
+            </p-autoComplete>
+          </fieldset>
 
-        <fieldset class="form-group">
-          <label class="m-r-sm">Sizes</label>
-          <div class="form-check form-check-inline">
-            <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" value="small"> small
-            </label>
-          </div>
-          <div class="form-check form-check-inline">
-            <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" value="medium"> medium
-            </label>
-          </div>
-          <div class="form-check form-check-inline">
-            <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" value="large"> large
-            </label>
-          </div>
-        </fieldset>
+          <fieldset class="form-group">
+             <p-checkbox label="Has Options" binary="true" formControlName="hasOptions"></p-checkbox>
+          </fieldset>
+
+          <fieldset class="form-group">
+             <p-checkbox label="Vegetarian" binary="true" formControlName="isVegetarian"></p-checkbox>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label class="m-r-sm">Sizes</label>
+            <p-selectButton class="form-control" [options]="sizesOptions" formControlName="sizes" multiple="true"></p-selectButton>
+          </fieldset>
+        </form>
       </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="addProductModal.hide()">
           Close
         </button>
-        <button type="button" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary" (click)="createProduct()">
           Save changes
         </button>
       </div>
