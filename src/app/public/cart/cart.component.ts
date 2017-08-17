@@ -1,11 +1,12 @@
-import { CartService } from './cart.service';
-import { UserService } from '../../core/user/user.service';
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { AngularFireDatabase } from 'angularfire2/database';
 
 import { DatatableComponent } from '@swimlane/ngx-datatable'
+
+import { CartService } from './../../core/cart/cart.service';
+import { UserService } from '../../core/user/user.service';
 
 import * as _ from 'lodash';
 
@@ -22,6 +23,7 @@ export class CartComponent implements OnInit {
     private cartService: CartService
   ) {
     this.cart = this.cartService.getCart();
+    console.log(this.cart);
   }
 
   ngOnInit() {

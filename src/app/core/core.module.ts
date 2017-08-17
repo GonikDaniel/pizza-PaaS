@@ -18,6 +18,8 @@ import { UserServiceConfig } from './user/user.service';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './_guards/auth.guard';
 import { SignInGuard } from './_guards/signin.guard';
+
+import { CartService } from './cart/cart.service';
 import { LoggerService } from './logger/logger.service';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerService } from './spinner/spinner.service';
@@ -41,6 +43,7 @@ import { PopupService } from './popups/popup.service';
   providers: [
     CookieService,
 
+    CartService,
     AuthService,
     AuthGuard,
     SignInGuard,

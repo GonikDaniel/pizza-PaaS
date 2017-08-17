@@ -21,6 +21,23 @@ export class CartService {
   }
 
   getCart() {
+    const cartId = this.getCartId();
+    return this.db.object(`carts/${cartId}`);
+  }
+
+  getProductPublicFields() {
+    return ['name', 'description', 'image', 'hasOptions', 'isVegetarian', 'selectedSize'];
+  }
+
+  addToCart(item) {
+    console.log(item);
+    const cartId = this.getCartId();
+    const cartItems = this.db.list(`carts/${cartId}/items`);
+    let test = cartItems.push(_.pick(item, this.getProductPublicFields));
+    console.log(test);
+  }
+
+  private getCartId() {
     let cartId = _.get(this.userService.user, 'cartId', this.cookieService.get('tmpCartId'));
     if (!cartId) {
       const createdAt = firebase.database.ServerValue.TIMESTAMP;
@@ -28,7 +45,7 @@ export class CartService {
       cartId = newCartRef.key;
       this.cookieService.put('tmpCartId', cartId);
     }
-    return this.db.object(`carts/${cartId}`);
+    return cartId;
   }
 
 }
