@@ -12,6 +12,20 @@
                 </div>
                 <div class="card-block">
 
+                  <h4 class="card-title">Social</h4>
+                  <button class="btn btn-outline-primary" type="button" (click)="openExternalLink('https://www.facebook.com/daniel.gonik.5')">
+                    <i class="fa fa-facebook-official"></i>&nbsp; Facebook
+                  </button>
+                  <button class="btn btn-outline-primary" type="button" (click)="openExternalLink('https://github.com/GonikDaniel')">
+                    <i class="fa fa-github"></i>&nbsp; Github
+                  </button>
+                  <button class="btn btn-outline-primary" type="button" (click)="openExternalLink('https://twitter.com/Gonik_Daniel')">
+                    <i class="fa fa-twitter"></i>&nbsp; Twitter
+                  </button>
+                </div>
+
+                <div class="card-block">
+                  <h4 class="card-title">Email</h4>
                   <form (ngSubmit)="sendMsg(msg)" [formGroup]="msg">
                     <div class="form-group">
                       <label>Your name</label>

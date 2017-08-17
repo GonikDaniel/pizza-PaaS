@@ -21,4 +21,8 @@ export class ContactComponent implements OnInit {
     });
   }
 
+  openExternalLink(link) {
+    window.open(link, '_blank');
+  }
+
 }
