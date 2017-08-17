@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 import { CartService } from '../../core/cart/cart.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'paas-catalogue',
@@ -50,7 +51,7 @@ export class CatalogueComponent implements OnInit {
       ));
       this.addProductModal.show();
     } else {
-      product.selectedSize = this.selectedProduct.selectedSize[0] || product.sizes[0];
+      product.selectedSize = _.get(this.selectedProduct, 'selectedSize[0]') || product.sizes[0];
       this.cartService.addToCart(product);
       this.addProductModal.hide();
     }

@@ -8,6 +8,8 @@ import { CookieService } from 'angular2-cookie/services/cookies.service';
 import * as firebase from 'firebase/app';
 import * as _ from 'lodash';
 
+import { PopupService } from './../popups/popup.service';
+
 @Injectable()
 export class CartService {
   private cartsRef;
@@ -15,7 +17,8 @@ export class CartService {
   constructor(
     private db: AngularFireDatabase,
     private userService: UserService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private popupService: PopupService
   ) {
     this.cartsRef = this.db.list('/carts');
   }
@@ -33,8 +36,7 @@ export class CartService {
     console.log(item);
     const cartId = this.getCartId();
     const cartItems = this.db.list(`carts/${cartId}/items`);
-    let test = cartItems.push(_.pick(item, this.getProductPublicFields));
-    console.log(test);
+    this.popupService.addToast('success', 'Done', 'Product has been added to cart!');
   }
 
   private getCartId() {
