@@ -70,7 +70,9 @@ export class ProductsComponent implements OnInit {
   ) {
     this.products = this.db.list('/products', {
       query: {
-        limitToLast: 20
+        limitToFirst: 20,
+        orderByChild: 'createdAt',
+        orderByKey: true
       }
     });
   }
