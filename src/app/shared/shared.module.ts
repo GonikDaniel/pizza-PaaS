@@ -14,6 +14,7 @@ import {
   DropdownModule,
   AutoCompleteModule,
   GrowlModule,
+  TooltipModule,
 } from 'primeng/primeng';
 
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
@@ -52,6 +53,7 @@ import { BreadcrumbsComponent } from './breadcrumb.component';
     DropdownModule,
     AutoCompleteModule,
     GrowlModule,
+    TooltipModule,
 
     NgxDatatableModule
   ],
@@ -75,6 +77,7 @@ import { BreadcrumbsComponent } from './breadcrumb.component';
     DropdownModule,
     AutoCompleteModule,
     GrowlModule,
+    TooltipModule,
 
     NgxDatatableModule,
 
