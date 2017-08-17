@@ -1,0 +1,63 @@
+<div class="app">
+  <div class="app-body">
+    <!-- Main content -->
+    <main class="main">
+      <div class="container-fluid">
+        <div class="animated fadeIn">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header">
+                  <i class="fa fa-align-justify"></i> Cart
+                </div>
+                <div class="card-block">
+                  <div *ngIf="!cart.items?.length">
+                    Your cart is empty. Try find something in <a routerLink="/app/catalogue" class="text-info">Catalogue</a>
+                  </div>
+                  <ngx-datatable
+                    *ngIf="cart.items?.length"
+                    #cartTable
+                    class="material striped m-t-md"
+                    [columns]="columns"
+                    [columnMode]="'force'"
+                    [headerHeight]="50"
+                    [footerHeight]="50"
+                    [rowHeight]="'auto'"
+                    [limit]="20"
+                    [rows]="cart.items">
+                    <ngx-datatable-column name="№" width="2px">
+                      <ng-template let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                        {{rowIndex}}
+                      </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column name="Name">
+                      <ng-template let-rowIndex="rowIndex" let-row="row" let-value="value" ngx-datatable-cell-template>
+                        {{value}}
+                      </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column name="Amount">
+                      <ng-template let-rowIndex="rowIndex" let-row="row" let-value="value" ngx-datatable-cell-template>
+                        {{value}}
+                      </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column name="Actions">
+                      <ng-template let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                        <button class="btn btn-outline-danger" type="button" pTooltip="Not implemented yet">
+                          <i class="fa fa-times"></i>&nbsp; Remove
+                        </button>
+                      </ng-template>
+                    </ngx-datatable-column>
+                  </ngx-datatable>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+  </div>
+</div>

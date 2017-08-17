@@ -29,12 +29,6 @@ export class UserService {
   ) {
     this._settings = _.get(config, 'settings', {});
     this.user = localStorage.getItem('user');
-    // this.authService.authState.subscribe(user => {
-    //   if (user) {
-    //     console.log('UserService got user: ', user);
-    //     this._user = user;
-    //   }
-    // });
   }
 
   get config() {
@@ -46,7 +40,7 @@ export class UserService {
   }
 
   get publicFields() {
-    return ['name', 'displayName', 'email', 'photoURL', 'avatar'];
+    return ['name', 'displayName', 'email', 'photoURL', 'avatar', 'cartId'];
   }
 
   set user(userData: Object) {
@@ -61,7 +55,6 @@ export class UserService {
     this.afDB.object(`users/${user.uid}`).$ref.once('value')
       .then(snapshot => {
         const dbUser = snapshot.val();
-        console.log(dbUser);
         localStorage.setItem('user', JSON.stringify(_.pick(dbUser, this.publicFields)));
         this.user = localStorage.getItem('user');
       })

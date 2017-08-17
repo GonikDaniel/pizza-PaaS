@@ -10,6 +10,7 @@ import { PublicRoutingModule } from './public-routing.module';
 import { PublicComponent } from './public.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,6 @@ import { ContactComponent } from './contact/contact.component';
     CatalogueModule,
     PublicRoutingModule
   ],
-  declarations: [PublicComponent, AboutComponent, ContactComponent]
+  declarations: [PublicComponent, AboutComponent, ContactComponent, CartComponent]
 })
 export class PublicModule { }
