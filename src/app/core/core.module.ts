@@ -19,6 +19,7 @@ import { SignInGuard } from './_guards/signin.guard';
 import { LoggerService } from './logger/logger.service';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerService } from './spinner/spinner.service';
+import { FormService } from './forms/form.service';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { SpinnerService } from './spinner/spinner.service';
     SignInGuard,
     UserService,
     LoggerService,
-    SpinnerService
+    SpinnerService,
+    FormService
   ]
 })
 export class CoreModule {

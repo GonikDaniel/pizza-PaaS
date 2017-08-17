@@ -33,11 +33,17 @@
                         <input formControlName="name" type="text" id="username" name="username" class="form-control" placeholder="Username">
                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
                       </div>
+                      <div class="error-msg" *ngIf="msg.get('name').hasError('required') && msg.get('name').touched">
+                        Name is required
+                      </div>
                     </div>
                     <div class="form-group">
                       <label>Your message</label>
                       <textarea formControlName="text" name="text" id="text" class="form-control" cols="30" rows="10" placeholder="Your message">
                       </textarea>
+                      <div class="error-msg" *ngIf="msg.get('text').hasError('required') && msg.get('text').touched">
+                        Message is required
+                      </div>
                     </div>
 
                     <div class="form-group form-actions">
