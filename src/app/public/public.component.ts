@@ -11,6 +11,7 @@ export class PublicComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    document.querySelector('body').classList.add('sidebar-hidden');
   }
 
 }

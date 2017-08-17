@@ -1,0 +1,46 @@
+<div class="app">
+  <div class="app-body">
+    <!-- Main content -->
+    <main class="main">
+      <div class="container-fluid">
+        <div class="animated fadeIn">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header">
+                  <i class="fa fa-align-justify"></i> Contacts
+                </div>
+                <div class="card-block">
+
+                  <form (ngSubmit)="sendMsg(msg)" [formGroup]="msg">
+                    <div class="form-group">
+                      <label>Your name</label>
+                      <div class="input-group">
+                        <input formControlName="name" type="text" id="username" name="username" class="form-control" placeholder="Username">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Your message</label>
+                      <textarea formControlName="text" name="text" id="text" class="form-control" cols="30" rows="10" placeholder="Your message">
+                      </textarea>
+                    </div>
+
+                    <div class="form-group form-actions">
+                      <button class="btn btn-outline-success" type="submit">
+                        <i class="fa fa-paper-plane-o"></i>&nbsp; Send
+                      </button>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+</div>

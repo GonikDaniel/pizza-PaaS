@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PublicComponent } from './public.component';
+import { ContactComponent } from './contact/contact.component';
+import { AboutComponent } from './about/about.component';
 
 export const routes: Routes = [
   {
@@ -11,6 +13,8 @@ export const routes: Routes = [
       { path: '', redirectTo: '/app/catalogue', pathMatch: 'full' },
       { path: 'auth', loadChildren: 'app/public/auth/auth.module#AuthModule' },
       { path: 'catalogue', loadChildren: 'app/public/catalogue/catalogue.module#CatalogueModule' },
+      { path: 'about', component: AboutComponent },
+      { path: 'contact', component: ContactComponent }
     ]
   }
 ];
