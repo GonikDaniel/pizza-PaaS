@@ -13,6 +13,7 @@ import {
   SelectButtonModule,
   DropdownModule,
   AutoCompleteModule,
+  GrowlModule,
 } from 'primeng/primeng';
 
 import { UnderDevelopmentPanelComponent } from './under-development-panel/under-development-panel.component';
@@ -47,6 +48,7 @@ import { BreadcrumbsComponent } from './breadcrumb.component';
     SelectButtonModule,
     DropdownModule,
     AutoCompleteModule,
+    GrowlModule,
   ],
   exports: [
     CommonModule,
@@ -67,6 +69,7 @@ import { BreadcrumbsComponent } from './breadcrumb.component';
     SelectButtonModule,
     DropdownModule,
     AutoCompleteModule,
+    GrowlModule,
 
     UnderDevelopmentPanelComponent
   ]

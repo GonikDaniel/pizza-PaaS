@@ -1,7 +1,9 @@
-import { Component, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 // import { BsModalService } from 'ngx-bootstrap/modal/bs-modal.service';
 // import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+
+import { Message } from 'primeng/primeng';
 
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
@@ -14,6 +16,8 @@ import * as firebase from 'firebase/app';
 })
 export class ProductsComponent implements OnInit {
   // public modalRef: BsModalRef;
+  @ViewChild('addProductModal') addProductModal;
+  public msgs: Message[] = [];
   public products;
   public product;
   public productTypes: Array<Object> = [
@@ -66,18 +70,14 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.product = this.formBuilder.group({
-      type: ['pizza', [Validators.required]],
-      name: ['', [Validators.required]],
-      description: [''],
-      image: [''],
-      isVegetarian: [false],
-      hasOptions: [false],
-      sizes: [['medium'], [Validators.required]]
-    });
+    this.initNewProduct();
 
     // this.product.valueChanges.subscribe(console.log);
     // this.product.statusChanges.subscribe(() => console.log(this.product.errors))
+  }
+
+  public clear() {
+    this.msgs = [];
   }
 
   public createProduct() {
@@ -86,8 +86,11 @@ export class ProductsComponent implements OnInit {
       return;
     }
     const createdAt = firebase.database.ServerValue.TIMESTAMP;
-    console.log({ createdAt, ...this.product.value });
-    // this.products.push({ createdAt, ...this.product.value });
+    this.products.push({ createdAt, ...this.product.value });
+
+    this.addProductModal.hide();
+    this.showToast('success', 'Done', 'Product has been created!')
+    this.initNewProduct();
   }
 
   public filterImages(event) {
@@ -113,12 +116,29 @@ export class ProductsComponent implements OnInit {
     console.log('Selected value is: ', value);
   }
 
+  public showToast(type = 'success', title = 'Done', content = '') {
+    this.clear();
+    this.msgs.push({ severity: 'success', summary: title, detail: content });
+  }
+
   public removed(value: any): void {
     console.log('Removed value is: ', value);
   }
 
   public refreshValue(value: any): void {
     // this.type = value;
+  }
+
+  private initNewProduct() {
+    this.product = this.formBuilder.group({
+      type: ['pizza', [Validators.required]],
+      name: ['', [Validators.required]],
+      description: [''],
+      image: [''],
+      isVegetarian: [false],
+      hasOptions: [false],
+      sizes: [['medium'], [Validators.required]]
+    });
   }
 
   private markFormGroupTouched(formGroup: FormGroup) {
