@@ -3,11 +3,13 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 // import { BsModalService } from 'ngx-bootstrap/modal/bs-modal.service';
 // import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 
-import { Message } from 'primeng/primeng';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
+
+import { FormService } from './../../core/forms/form.service';
+import { PopupService } from './../../core/popups/popup.service';
 
 @Component({
   selector: 'paas-products',
@@ -20,7 +22,6 @@ export class ProductsComponent implements OnInit {
   @ViewChild('addProductModal') addProductModal;
   @ViewChild(DatatableComponent) productsTable: DatatableComponent;
   public productsTemp = [];
-  public msgs: Message[] = [];
   public products;
   public product;
   public productTypes: Array<Object> = [
@@ -63,7 +64,9 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private db: AngularFireDatabase,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private formService: FormService,
+    private popupService: PopupService
   ) {
     this.products = this.db.list('/products', {
       query: {
@@ -79,12 +82,8 @@ export class ProductsComponent implements OnInit {
     // this.product.statusChanges.subscribe(() => console.log(this.product.errors))
   }
 
-  public clear() {
-    this.msgs = [];
-  }
-
   public createProduct() {
-    this.markFormGroupTouched(this.product);
+    this.formService.markFormGroupTouched(this.product);
     if (!this.product.valid) {
       return;
     }
@@ -92,7 +91,7 @@ export class ProductsComponent implements OnInit {
     this.products.push({ createdAt, ...this.product.value });
 
     this.addProductModal.hide();
-    this.showToast('success', 'Done', 'Product has been created!')
+    this.popupService.addToast('success', 'Done', 'Product has been created!');
     this.initNewProduct();
   }
 
@@ -119,11 +118,6 @@ export class ProductsComponent implements OnInit {
     console.log('Selected value is: ', value);
   }
 
-  public showToast(type = 'success', title = 'Done', content = '') {
-    this.clear();
-    this.msgs.push({ severity: 'success', summary: title, detail: content });
-  }
-
   public removed(value: any): void {
     console.log('Removed value is: ', value);
   }
@@ -141,16 +135,6 @@ export class ProductsComponent implements OnInit {
       isVegetarian: false,
       hasOptions: false,
       sizes: [['medium'], [Validators.required]]
-    });
-  }
-
-  private markFormGroupTouched(formGroup: FormGroup) {
-    (<any>Object).values(formGroup.controls).forEach(control => {
-      control.markAsTouched();
-
-      if (control.controls) {
-        control.controls.forEach(c => this.markFormGroupTouched(c));
-      }
     });
   }
 

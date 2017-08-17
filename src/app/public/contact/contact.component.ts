@@ -1,3 +1,4 @@
+import { PopupService } from './../../core/popups/popup.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -14,14 +15,12 @@ export class ContactComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private formService: FormService
+    private formService: FormService,
+    private popupService: PopupService
   ) { }
 
   ngOnInit() {
-    this.msg = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      text: ['', [Validators.required]]
-    });
+    this.initNewForm();
   }
 
   openExternalLink(link) {
@@ -33,6 +32,15 @@ export class ContactComponent implements OnInit {
     if (!this.msg.valid) {
       return;
     }
+    this.initNewForm();
+    this.popupService.addToast('success', 'Done', 'Your message has been send!');
+  }
+
+  private initNewForm() {
+    this.msg = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      text: ['', [Validators.required]]
+    });
   }
 
 }

@@ -13,10 +13,10 @@
                 <div class="card-block">
 
                   <h4 class="card-title">Social</h4>
-                  <button class="btn btn-outline-primary" type="button" (click)="openExternalLink('https://www.facebook.com/daniel.gonik.5')">
+                  <button class="btn btn-primary" type="button" (click)="openExternalLink('https://www.facebook.com/daniel.gonik.5')">
                     <i class="fa fa-facebook-official"></i>&nbsp; Facebook
                   </button>
-                  <button class="btn btn-outline-primary" type="button" (click)="openExternalLink('https://github.com/GonikDaniel')">
+                  <button class="btn btn-secondary" type="button" (click)="openExternalLink('https://github.com/GonikDaniel')">
                     <i class="fa fa-github"></i>&nbsp; Github
                   </button>
                   <button class="btn btn-outline-primary" type="button" (click)="openExternalLink('https://twitter.com/Gonik_Daniel')">
@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="form-group form-actions">
-                      <button class="btn btn-outline-success" type="submit">
+                      <button class="btn btn-outline-success" type="submit" [disabled]="msg.invalid">
                         <i class="fa fa-paper-plane-o"></i>&nbsp; Send
                       </button>
                     </div>

@@ -20,6 +20,7 @@ import { LoggerService } from './logger/logger.service';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerService } from './spinner/spinner.service';
 import { FormService } from './forms/form.service';
+import { PopupService } from './popups/popup.service';
 
 @NgModule({
   imports: [
@@ -42,7 +43,8 @@ import { FormService } from './forms/form.service';
     UserService,
     LoggerService,
     SpinnerService,
-    FormService
+    FormService,
+    PopupService
   ]
 })
 export class CoreModule {
