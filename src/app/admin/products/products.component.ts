@@ -4,6 +4,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 // import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 
 import { Message } from 'primeng/primeng';
+import { DatatableComponent } from '@swimlane/ngx-datatable';
 
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
@@ -17,6 +18,8 @@ import * as firebase from 'firebase/app';
 export class ProductsComponent implements OnInit {
   // public modalRef: BsModalRef;
   @ViewChild('addProductModal') addProductModal;
+  @ViewChild(DatatableComponent) productsTable: DatatableComponent;
+  public productsTemp = [];
   public msgs: Message[] = [];
   public products;
   public product;

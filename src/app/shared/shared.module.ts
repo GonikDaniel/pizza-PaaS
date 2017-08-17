@@ -18,7 +18,6 @@ import {
 
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
-
 import { UnderDevelopmentPanelComponent } from './under-development-panel/under-development-panel.component';
 import { NAV_DROPDOWN_DIRECTIVES } from './nav-dropdown.directive';
 import { SIDEBAR_TOGGLE_DIRECTIVES } from './sidebar.directive';
@@ -28,6 +27,7 @@ import { BreadcrumbsComponent } from './breadcrumb.component';
 
 @NgModule({
   declarations: [
+
     NAV_DROPDOWN_DIRECTIVES,
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
