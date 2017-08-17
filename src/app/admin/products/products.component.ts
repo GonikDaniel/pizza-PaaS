@@ -1,8 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-// import { BsModalService } from 'ngx-bootstrap/modal/bs-modal.service';
-// import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 
+import { ModalDirective } from 'ngx-bootstrap/modal';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -19,9 +18,8 @@ import { PopupService } from './../../core/popups/popup.service';
 })
 export class ProductsComponent implements OnInit {
   // public modalRef: BsModalRef;
-  @ViewChild('addProductModal') addProductModal;
+  @ViewChild('addProductModal') addProductModal: ModalDirective;
   @ViewChild(DatatableComponent) productsTable: DatatableComponent;
-  public productsTemp = [];
   public products;
   public product;
   public productTypes: Array<Object> = [
@@ -107,25 +105,13 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  public handleDropdownClick() {
+  public handleDropdownClick(event) {
     this.filteredImages = [];
 
     // mimic remote call
     setTimeout(() => {
       this.filteredImages = this.productImages;
     }, 100)
-  }
-
-  public selected(value: any): void {
-    console.log('Selected value is: ', value);
-  }
-
-  public removed(value: any): void {
-    console.log('Removed value is: ', value);
-  }
-
-  public refreshValue(value: any): void {
-    // this.type = value;
   }
 
   private initNewProduct() {

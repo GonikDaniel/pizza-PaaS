@@ -4,10 +4,9 @@ import { RouterModule } from '@angular/router';
 
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
-  declarations: [FooterComponent, NavbarComponent, SidebarComponent],
+  declarations: [FooterComponent, NavbarComponent],
   imports: [
     CommonModule,
     RouterModule
@@ -16,8 +15,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     CommonModule,
 
     FooterComponent,
-    NavbarComponent,
-    SidebarComponent
+    NavbarComponent
   ]
 })
 export class LayoutModule { }

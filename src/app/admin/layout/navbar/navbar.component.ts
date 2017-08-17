@@ -1,6 +1,5 @@
-import { UserService } from './../../../core/user/user.service';
 import { Component, OnInit } from '@angular/core';
-import { ROUTES } from '../routes/sidebar-routes.config';
+import { UserService } from './../../../core/user/user.service';
 
 @Component({
   selector: 'paas-navbar',
@@ -9,15 +8,13 @@ import { ROUTES } from '../routes/sidebar-routes.config';
 })
 export class NavbarComponent implements OnInit {
   public user;
-  private listTitles: any[];
 
   constructor(
     private userService: UserService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.user = this.userService.user;
-    this.listTitles = ROUTES.filter(listTitle => listTitle);
   }
 
 }

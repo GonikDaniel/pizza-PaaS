@@ -7,9 +7,9 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "ng lint --type-check",
     "e2e": "ng e2e",
-    "publish": "ng lint && ng build --aot --prod && firebase deploy"
+    "publish": "ng lint --type-check && ng build --aot --prod && firebase deploy"
   },
   "private": true,
   "dependencies": {

@@ -63,16 +63,16 @@
       </div>
       <div class="modal-body">
 
-        <form role="form" (ngSubmit)="createProduct(product)" [formGroup]="product" class="add-new-product-form">
-          <fieldset class="form-group">
+        <form role="form" (ngSubmit)="createProduct()" [formGroup]="product" class="add-new-product-form">
+          <div class="form-group">
             <label>Type</label>
             <p-selectButton class="form-control" [options]="productTypes" formControlName="type"></p-selectButton>
             <div class="error-msg" *ngIf="product.get('type').hasError('required') && product.get('type').touched">
               Type is required
             </div>
-          </fieldset>
+          </div>
 
-          <fieldset class="form-group" [ngClass]="{ 'has-danger': product.controls['name'].invalid && product.get('name').touched }">
+          <div class="form-group" [ngClass]="{ 'has-danger': product.controls['name'].invalid && product.get('name').touched }">
             <label>Name</label>
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-check"></i></span>
@@ -82,56 +82,47 @@
             <div class="error-msg" *ngIf="product.get('name').hasError('required') && product.get('name').touched">
               Name is required
             </div>
-          </fieldset>
+          </div>
 
-          <fieldset class="form-group">
+          <div class="form-group">
             <label>Description</label>
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-list-alt"></i></span>
                <input type="text" class="form-control" formControlName="description">
             </div>
             <small class="text-muted">ex. 'Your basic plain cheese pizza with no toppings.\nIncludes tomato sauce, mozzarella, oregano and a sprinkling of cheddar'</small>
-          </fieldset>
+          </div>
 
-          <fieldset class="form-group image-form-control">
+          <div class="form-group image-form-control">
             <label>Image</label>
-            <!-- <ng-select
-              [multiple]="false"
-              [items]="productImages"
-              (data)="refreshValue($event)"
-              (selected)="selected($event)"
-              (removed)="removed($event)"
-              placeholder="Select image...">
-            </ng-select> -->
-
              <p-autoComplete class="form-control" formControlName="image" [suggestions]="filteredImages" (completeMethod)="filterImages($event)"
                 [size]="30" [minLength]="1" placeholder="Select image..." [dropdown]="true" (onDropdownClick)="handleDropdownClick($event)">
-                <ng-template let-image pTemplate="item">
-                    <div class="ui-helper-clearfix">
-                        <img src="assets/img/pizzas/{{image}}" class="product-img"/>
-                        <div class="product-title">
-                          {{image}}
-                        </div>
+                <ng-template let-image pTemplate="item" >
+                  <div class="ui-helper-clearfix">
+                    <img src="assets/img/pizzas/{{ image }}" class="product-img"/>
+                    <div class="product-title">
+                      {{image}}
                     </div>
+                  </div>
                 </ng-template>
             </p-autoComplete>
-          </fieldset>
+          </div>
 
-          <fieldset class="form-group">
+          <div class="form-group">
              <p-checkbox label="Has Options" binary="true" formControlName="hasOptions"></p-checkbox>
-          </fieldset>
+          </div>
 
-          <fieldset class="form-group">
+          <div class="form-group">
              <p-checkbox label="Vegetarian" binary="true" formControlName="isVegetarian"></p-checkbox>
-          </fieldset>
+          </div>
 
-          <fieldset class="form-group" [ngClass]="{ 'has-danger': product.controls['sizes'].invalid && product.get('sizes').touched }">
+          <div class="form-group" [ngClass]="{ 'has-danger': product.controls['sizes'].invalid && product.get('sizes').touched }">
             <label class="m-r-sm">Sizes</label>
             <p-selectButton class="form-control" [options]="sizesOptions" formControlName="sizes" multiple="true"></p-selectButton>
             <div class="error-msg" *ngIf="product.get('sizes').hasError('required') && product.get('sizes').touched">
               Size is required
             </div>
-          </fieldset>
+          </div>
         </form>
       </div>
 

@@ -17,7 +17,7 @@ import { AsideComponent } from './aside/aside.component';
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
-    AsideComponent
+    AsideComponent,
   ],
   imports: [
     CommonModule,

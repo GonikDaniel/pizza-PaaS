@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { AngularFireDatabase } from 'angularfire2/database';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import { CartService } from '../../core/cart/cart.service';
 import * as _ from 'lodash';
@@ -11,7 +12,7 @@ import * as _ from 'lodash';
   styleUrls: ['./catalogue.component.scss']
 })
 export class CatalogueComponent implements OnInit {
-  @ViewChild('addToCartModal') addProductModal;
+  @ViewChild('addToCartModal') addToCartModal: ModalDirective;
   public products;
   public availableSizes = [
     { label: 'Small', value: 'small' },
@@ -49,11 +50,11 @@ export class CatalogueComponent implements OnInit {
       this.selectedProduct.sizes = this.availableSizes.filter(size => (
         product.sizes.includes(size.value)
       ));
-      this.addProductModal.show();
+      this.addToCartModal.show();
     } else {
       product.selectedSize = _.get(this.selectedProduct, 'selectedSize[0]') || product.sizes[0];
       this.cartService.addToCart(product);
-      this.addProductModal.hide();
+      this.addToCartModal.hide();
     }
   }
 
