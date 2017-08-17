@@ -10,6 +10,8 @@
           <button type="button" class="btn btn-primary" (click)="addProductModal.show()">
             <i class="fa fa-plus-circle"></i> Add new product
           </button>
+
+
         </div>
       </div>
     </div>
@@ -27,7 +29,7 @@
       </div>
       <div class="modal-body">
 
-        <form role="form" (ngSubmit)="createProduct(product)" [formGroup]="product">
+        <form role="form" (ngSubmit)="createProduct(product)" [formGroup]="product" class="add-new-product-form">
           <fieldset class="form-group">
             <label>Type</label>
             <p-selectButton class="form-control" [options]="productTypes" formControlName="type"></p-selectButton>
@@ -36,7 +38,7 @@
             </div>
           </fieldset>
 
-          <fieldset class="form-group" [class.has-danger]="product.get('name').hasError('required') && product.get('name').touched">
+          <fieldset class="form-group" [ngClass]="{ 'has-danger': product.controls['name'].invalid && product.get('name').touched }">
             <label>Name</label>
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-check"></i></span>
@@ -57,7 +59,7 @@
             <small class="text-muted">ex. 'Your basic plain cheese pizza with no toppings.\nIncludes tomato sauce, mozzarella, oregano and a sprinkling of cheddar'</small>
           </fieldset>
 
-          <fieldset class="form-group">
+          <fieldset class="form-group image-form-control">
             <label>Image</label>
             <!-- <ng-select
               [multiple]="false"
@@ -69,11 +71,11 @@
             </ng-select> -->
 
              <p-autoComplete class="form-control" formControlName="image" [suggestions]="filteredImages" (completeMethod)="filterImages($event)"
-                [size]="30" [minLength]="1" placeholder="Start typing" [dropdown]="true" (onDropdownClick)="handleDropdownClick($event)">
+                [size]="30" [minLength]="1" placeholder="Select image..." [dropdown]="true" (onDropdownClick)="handleDropdownClick($event)">
                 <ng-template let-image pTemplate="item">
                     <div class="ui-helper-clearfix">
-                        <img src="assets/img/pizzas/{{image}}" style="width:32px;display:inline-block;margin:5px 0 2px 5px"/>
-                        <div style="font-size:18px;float:right;margin:10px 10px 0 0">
+                        <img src="assets/img/pizzas/{{image}}" class="product-img"/>
+                        <div class="product-title">
                           {{image}}
                         </div>
                     </div>
@@ -89,7 +91,7 @@
              <p-checkbox label="Vegetarian" binary="true" formControlName="isVegetarian"></p-checkbox>
           </fieldset>
 
-          <fieldset class="form-group" [class.has-danger]="product.get('sizes').hasError('required') && product.get('sizes').touched">
+          <fieldset class="form-group" [ngClass]="{ 'has-danger': product.controls['sizes'].invalid && product.get('sizes').touched }">
             <label class="m-r-sm">Sizes</label>
             <p-selectButton class="form-control" [options]="sizesOptions" formControlName="sizes" multiple="true"></p-selectButton>
             <div class="error-msg" *ngIf="product.get('sizes').hasError('required') && product.get('sizes').touched">

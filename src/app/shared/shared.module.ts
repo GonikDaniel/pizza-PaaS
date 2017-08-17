@@ -16,6 +16,9 @@ import {
   GrowlModule,
 } from 'primeng/primeng';
 
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
+
 import { UnderDevelopmentPanelComponent } from './under-development-panel/under-development-panel.component';
 import { NAV_DROPDOWN_DIRECTIVES } from './nav-dropdown.directive';
 import { SIDEBAR_TOGGLE_DIRECTIVES } from './sidebar.directive';
@@ -49,6 +52,8 @@ import { BreadcrumbsComponent } from './breadcrumb.component';
     DropdownModule,
     AutoCompleteModule,
     GrowlModule,
+
+    NgxDatatableModule
   ],
   exports: [
     CommonModule,
@@ -70,6 +75,8 @@ import { BreadcrumbsComponent } from './breadcrumb.component';
     DropdownModule,
     AutoCompleteModule,
     GrowlModule,
+
+    NgxDatatableModule,
 
     UnderDevelopmentPanelComponent
   ]

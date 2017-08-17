@@ -5,9 +5,6 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
-// Ng2-select
-import { SelectModule } from 'ng2-select';
-
 import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from '../shared/shared.module';
 import { AdminRoutingModule } from './admin-routing.module';
@@ -33,7 +30,6 @@ import { ProductsComponent } from './products/products.component';
     BsDropdownModule,
     TabsModule,
     ModalModule.forRoot(),
-    SelectModule,
 
     LayoutModule,
     SharedModule,

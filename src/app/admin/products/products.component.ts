@@ -135,8 +135,8 @@ export class ProductsComponent implements OnInit {
       name: ['', [Validators.required]],
       description: [''],
       image: [''],
-      isVegetarian: [false],
-      hasOptions: [false],
+      isVegetarian: false,
+      hasOptions: false,
       sizes: [['medium'], [Validators.required]]
     });
   }

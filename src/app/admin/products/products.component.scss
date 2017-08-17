@@ -1,3 +1,17 @@
 .ui-chkbox-label {
   margin-top: 5px;
 }
+
+.add-new-product-form {
+  .image-form-control {
+    .product-img {
+      width: 32px;
+      display: inline-block;
+      margin: 5px 0 2px 5px
+    }
+    .product-title {
+      font-size: 18px;
+      float: right;
+    }
+  }
+}
