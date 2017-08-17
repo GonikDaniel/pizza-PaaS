@@ -14,7 +14,7 @@ export const routes: Routes = [
       { path: '', redirectTo: '/app/catalogue', pathMatch: 'full' },
       { path: 'auth', loadChildren: 'app/public/auth/auth.module#AuthModule' },
       { path: 'catalogue', loadChildren: 'app/public/catalogue/catalogue.module#CatalogueModule' },
-      { path: 'cart', component: CartComponent },
+      { path: 'cart', loadChildren: 'app/public/cart/cart.module#CartModule' },
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent }
     ]

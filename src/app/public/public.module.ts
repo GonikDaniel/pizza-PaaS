@@ -5,12 +5,12 @@ import { SharedModule } from './../shared/shared.module';
 import { LayoutModule } from './layout/layout.module';
 import { AuthModule } from './auth/auth.module';
 import { CatalogueModule } from './catalogue/catalogue.module';
+import { CartModule } from './cart/cart.module';
 
 import { PublicRoutingModule } from './public-routing.module';
 import { PublicComponent } from './public.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
-import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   imports: [
@@ -20,8 +20,9 @@ import { CartComponent } from './cart/cart.component';
     LayoutModule,
     AuthModule,
     CatalogueModule,
+    CartModule,
     PublicRoutingModule
   ],
-  declarations: [PublicComponent, AboutComponent, ContactComponent, CartComponent]
+  declarations: [PublicComponent, AboutComponent, ContactComponent]
 })
 export class PublicModule { }
