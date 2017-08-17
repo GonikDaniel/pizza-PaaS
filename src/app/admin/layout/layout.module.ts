@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 
 import { TabsModule } from 'ngx-bootstrap/tabs';
 
+import { SharedModule } from '../../shared/shared.module';
+
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -23,7 +25,9 @@ import { AsideComponent } from './aside/aside.component';
     ReactiveFormsModule,
     RouterModule,
 
-    TabsModule
+    TabsModule,
+
+    SharedModule
   ],
   exports: [
     CommonModule,

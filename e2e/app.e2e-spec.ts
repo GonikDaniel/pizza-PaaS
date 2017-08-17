@@ -1,6 +1,6 @@
 import { PizzaPaaSPage } from './app.po';
 
-describe('pizza-paa-s App', () => {
+describe('pizza-paas App', () => {
   let page: PizzaPaaSPage;
 
   beforeEach(() => {

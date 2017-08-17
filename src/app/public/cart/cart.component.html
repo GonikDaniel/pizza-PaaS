@@ -14,11 +14,12 @@
                   <div *ngIf="!cart.items?.length">
                     Your cart is empty. Try find something in <a routerLink="/app/catalogue" class="text-info">Catalogue</a>
                   </div>
+
+                  <!-- [columns]="columns" -->
                   <ngx-datatable
                     *ngIf="cart.items?.length"
                     #cartTable
                     class="material striped m-t-md"
-                    [columns]="columns"
                     [columnMode]="'force'"
                     [headerHeight]="50"
                     [footerHeight]="50"

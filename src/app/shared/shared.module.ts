@@ -25,7 +25,7 @@ import { NAV_DROPDOWN_DIRECTIVES } from './nav-dropdown.directive';
 import { SIDEBAR_TOGGLE_DIRECTIVES } from './sidebar.directive';
 import { AsideToggleDirective } from './aside.directive';
 import { BreadcrumbsComponent } from './breadcrumb.component';
-// import { AutofocusDirective } from './autofocus.directive';
+import { AutofocusDirective } from './autofocus.directive';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import { BreadcrumbsComponent } from './breadcrumb.component';
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
     BreadcrumbsComponent,
-    // AutofocusDirective,
+    AutofocusDirective,
 
     UnderDevelopmentPanelComponent
   ],
@@ -67,7 +67,7 @@ import { BreadcrumbsComponent } from './breadcrumb.component';
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
     BreadcrumbsComponent,
-    // AutofocusDirective,
+    AutofocusDirective,
 
     BsDropdownModule,
     TabsModule,
