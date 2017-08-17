@@ -1,3 +1,4 @@
+import { CartService } from './cart.service';
 import { UserService } from '../../core/user/user.service';
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -6,7 +7,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 
 import { DatatableComponent } from '@swimlane/ngx-datatable'
 
-import * as _ from 'lodash';;
+import * as _ from 'lodash';
 
 @Component({
   selector: 'paas-cart',
@@ -18,13 +19,9 @@ export class CartComponent implements OnInit {
   public cart;
 
   constructor(
-    private db: AngularFireDatabase,
-    private userService: UserService
+    private cartService: CartService
   ) {
-    const cartId = _.get(this.userService.user, 'cartId');
-    this.cart = cartId
-      ? this.db.object(`carts/${cartId}`)
-      : Observable.of({ items: [] });
+    this.cart = this.cartService.getCart();
   }
 
   ngOnInit() {

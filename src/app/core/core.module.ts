@@ -10,6 +10,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../../environments/environment.dev';
 
+import { CookieService } from 'angular2-cookie/services/cookies.service';
+
 import { UserService } from './user/user.service';
 import { UserServiceConfig } from './user/user.service';
 
@@ -37,6 +39,8 @@ import { PopupService } from './popups/popup.service';
     AngularFireAuthModule
   ],
   providers: [
+    CookieService,
+
     AuthService,
     AuthGuard,
     SignInGuard,
