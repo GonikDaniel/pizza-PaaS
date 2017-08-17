@@ -26,19 +26,25 @@
       </div>
       <div class="modal-body">
 
-        <form role="form" (submit)="createProduct(product)" [formGroup]="product">
+        <form role="form" (ngSubmit)="createProduct(product)" [formGroup]="product">
           <fieldset class="form-group">
             <label>Type</label>
-             <p-selectButton class="form-control" [options]="productTypes" formControlName="type"></p-selectButton>
+            <p-selectButton class="form-control" [options]="productTypes" formControlName="type"></p-selectButton>
+            <div class="error-msg" *ngIf="product.get('type').hasError('required') && product.get('type').touched">
+              Type is required
+            </div>
           </fieldset>
 
-          <fieldset class="form-group">
+          <fieldset class="form-group" [class.has-danger]="product.get('name').hasError('required') && product.get('name').touched">
             <label>Name</label>
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-check"></i></span>
                <input type="text" class="form-control" formControlName="name">
             </div>
             <small class="text-muted">ex. 'Plain Cheese'</small>
+            <div class="error-msg" *ngIf="product.get('name').hasError('required') && product.get('name').touched">
+              Name is required
+            </div>
           </fieldset>
 
           <fieldset class="form-group">
@@ -82,9 +88,12 @@
              <p-checkbox label="Vegetarian" binary="true" formControlName="isVegetarian"></p-checkbox>
           </fieldset>
 
-          <fieldset class="form-group">
+          <fieldset class="form-group" [class.has-danger]="product.get('sizes').hasError('required') && product.get('sizes').touched">
             <label class="m-r-sm">Sizes</label>
             <p-selectButton class="form-control" [options]="sizesOptions" formControlName="sizes" multiple="true"></p-selectButton>
+            <div class="error-msg" *ngIf="product.get('sizes').hasError('required') && product.get('sizes').touched">
+              Size is required
+            </div>
           </fieldset>
         </form>
       </div>
@@ -93,7 +102,7 @@
         <button type="button" class="btn btn-secondary" (click)="addProductModal.hide()">
           Close
         </button>
-        <button type="submit" class="btn btn-primary" (click)="createProduct()">
+        <button type="submit" class="btn btn-primary" (click)="createProduct()" [disabled]="product.invalid">
           Save changes
         </button>
       </div>

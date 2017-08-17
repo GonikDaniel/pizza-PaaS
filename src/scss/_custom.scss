@@ -63,7 +63,6 @@
   }
 }
 
-
 .sidebar .sidebar-nav .nav {
   .nav-title {
     span {
@@ -89,4 +88,17 @@
       }
     }
   }
+}
+
+.error-msg, .warning-msg {
+  font-size: 12px;
+  margin: 5px 0;
+}
+
+.error-msg {
+  color: $brand-danger;
+}
+
+.warning-msg {
+  color: $brand-warning;
 }

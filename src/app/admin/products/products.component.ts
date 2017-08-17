@@ -1,7 +1,10 @@
 import { Component, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 // import { BsModalService } from 'ngx-bootstrap/modal/bs-modal.service';
 // import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+
+import { AngularFireDatabase } from 'angularfire2/database';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'paas-products',
@@ -11,6 +14,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class ProductsComponent implements OnInit {
   // public modalRef: BsModalRef;
+  public products;
   public product;
   public productTypes: Array<Object> = [
     { label: 'Pizza', value: 'pizza' },
@@ -51,8 +55,15 @@ export class ProductsComponent implements OnInit {
   // private type: any = ['pizza'];
 
   constructor(
+    private db: AngularFireDatabase,
     private formBuilder: FormBuilder
-  ) {}
+  ) {
+    this.products = this.db.list('/products', {
+      query: {
+        limitToLast: 20
+      }
+    });
+  }
 
   ngOnInit() {
     this.product = this.formBuilder.group({
@@ -62,7 +73,7 @@ export class ProductsComponent implements OnInit {
       image: [''],
       isVegetarian: [false],
       hasOptions: [false],
-      sizes: [[]]
+      sizes: [['medium'], [Validators.required]]
     });
 
     // this.product.valueChanges.subscribe(console.log);
@@ -70,7 +81,13 @@ export class ProductsComponent implements OnInit {
   }
 
   public createProduct() {
-    console.log(this.product.value)
+    this.markFormGroupTouched(this.product);
+    if (!this.product.valid) {
+      return;
+    }
+    const createdAt = firebase.database.ServerValue.TIMESTAMP;
+    console.log({ createdAt, ...this.product.value });
+    // this.products.push({ createdAt, ...this.product.value });
   }
 
   public filterImages(event) {
@@ -102,6 +119,16 @@ export class ProductsComponent implements OnInit {
 
   public refreshValue(value: any): void {
     // this.type = value;
+  }
+
+  private markFormGroupTouched(formGroup: FormGroup) {
+    (<any>Object).values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+
+      if (control.controls) {
+        control.controls.forEach(c => this.markFormGroupTouched(c));
+      }
+    });
   }
 
   // public openModal(template: TemplateRef<any>) {
